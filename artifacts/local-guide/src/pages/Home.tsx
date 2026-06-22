@@ -152,7 +152,10 @@ export default function Home() {
       {/* Sticky Nav */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border py-3 px-4 md:px-8">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <img src={logoPath} alt="View Ridge Guide" className="h-9 w-auto" />
+          <div className="flex items-center gap-2.5">
+            <img src={logoPath} alt="View Ridge Guide" className="h-9 w-auto" />
+            <span className="font-serif font-medium text-lg text-primary tracking-tight leading-none">NE Seattle Guide</span>
+          </div>
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground overflow-x-auto no-scrollbar">
             <a href="#essentials" className="hover:text-primary transition-colors whitespace-nowrap">Essentials</a>
             <a href="#food" className="hover:text-primary transition-colors whitespace-nowrap">Food & Drink</a>
