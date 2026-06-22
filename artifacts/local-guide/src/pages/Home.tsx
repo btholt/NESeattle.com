@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { places, Category, Price, DistanceTier, Place } from "@/data/places";
 import { useGetEvents } from "@workspace/api-client-react";
+import logoPath from "@assets/logo-removebg-preview_1782171480209.png";
 import { ExternalLink, Navigation2, Baby, TreePine, Map, Calendar as CalendarIcon, Info, Car, Mountain, Sun } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -151,7 +152,7 @@ export default function Home() {
       {/* Sticky Nav */}
       <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border py-3 px-4 md:px-8">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="font-serif font-medium text-lg text-primary tracking-tight">View Ridge Guide</div>
+          <img src={logoPath} alt="View Ridge Guide" className="h-9 w-auto" />
           <div className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground overflow-x-auto no-scrollbar">
             <a href="#essentials" className="hover:text-primary transition-colors whitespace-nowrap">Essentials</a>
             <a href="#food" className="hover:text-primary transition-colors whitespace-nowrap">Food & Drink</a>
