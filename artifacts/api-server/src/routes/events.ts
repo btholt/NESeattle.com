@@ -83,12 +83,11 @@ async function fetchTicketmaster(): Promise<Event[]> {
 
   const params = new URLSearchParams({
     apikey: apiKey,
-    classificationName: "music",
     dmaId: "383",
     startDateTime: now,
     endDateTime: future,
     sort: "date,asc",
-    size: "15",
+    size: "20",
   });
 
   const res = await fetch(
