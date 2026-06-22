@@ -10,6 +10,8 @@ servers:
 tags:
   - name: health
     description: Health operations
+  - name: events
+    description: Live events feed
 paths:
   /healthz:
     get:
@@ -24,6 +26,19 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+  /events:
+    get:
+      operationId: getEvents
+      tags: [events]
+      summary: Get upcoming Seattle events
+      description: Returns upcoming concert/music events near Seattle from SeatGeek, Ticketmaster, or a fallback list of event calendar links
+      responses:
+        "200":
+          description: Events list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EventsResponse"
 components:
   schemas:
     HealthStatus:
@@ -33,4 +48,48 @@ components:
           type: string
       required:
         - status
-
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        venue:
+          type: string
+        date:
+          type: string
+        ticketsUrl:
+          type: string
+      required:
+        - id
+        - title
+        - venue
+        - date
+        - ticketsUrl
+    EventsResponse:
+      type: object
+      properties:
+        source:
+          type: string
+          description: "Which source was used: seatgeek, ticketmaster, or fallback"
+        events:
+          type: array
+          items:
+            $ref: "#/components/schemas/Event"
+        fallbackLinks:
+          description: Populated when source is fallback
+          type: ["array", "null"]
+          items:
+            type: object
+            properties:
+              label:
+                type: string
+              url:
+                type: string
+            required:
+              - label
+              - url
+      required:
+        - source
+        - events

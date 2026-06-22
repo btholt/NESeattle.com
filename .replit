@@ -18,3 +18,21 @@ expertMode = true
 [postMerge]
 path = "scripts/post-merge.sh"
 timeoutMs = 20000
+
+[[ports]]
+localPort = 8080
+externalPort = 8080
+
+[[ports]]
+localPort = 8081
+externalPort = 80
+
+[[ports]]
+localPort = 23414
+externalPort = 3000
+
+[userenv]
+
+[userenv.shared]
+TICKETMASTER_CONSUMER_KEY = "O63E4BYp3Fl5LkCQGXvZLpubcxRfy0nS"
+TICKETMASTER_CONSUMER_SECRET = "pY7kBwnu4zU1IzcO"

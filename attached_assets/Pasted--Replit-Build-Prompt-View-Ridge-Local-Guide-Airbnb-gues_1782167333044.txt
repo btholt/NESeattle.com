@@ -1,0 +1,252 @@
+# Replit Build Prompt — "View Ridge Local Guide" (Airbnb guest site)
+
+Copy everything below this line into Replit Agent.
+
+---
+
+## What I want you to build
+
+A single-page **local guide website** for guests staying at my Airbnb in **Northeast Seattle** (unit address: **6833 36th Ave NE #B, Seattle, WA 98115**). The City of Seattle officially places the address in **Bryant**, though it sits right at the crossroads of five neighborhoods — View Ridge, Wedgwood, Ravenna, the U District, and Bryant. This is purely a *curated local guide* — there is no booking, no house manual, no check-in info (that all lives in Airbnb). The goal is a beautiful, fast, mobile-first page a guest opens on their phone to answer "where's coffee / a park / a great dinner / what's happening this week."
+
+Treat the curated content I provide below as **real content** — build the site around it, don't use placeholder text.
+
+## Audience & usage context
+
+- Guests are usually **on their phones**, often outdoors, deciding where to go *right now*.
+- Mix of out-of-town first-timers (want the iconic Seattle stuff) and return/independent travelers (want the local, opinionated picks).
+- Some are families with young kids; some are couples; some are foodies.
+
+## Design direction
+
+- **Mobile-first**, clean, warm, with a Pacific-Northwest feel (evergreen/lake/stone palette, generous whitespace, large readable type). Looks premium, not like a default template.
+- **Single page** with a **sticky top nav** of jump-links to each section, plus a clear hero.
+- A **filter/search bar** near the top: filter by **category**, **price**, **kid-friendly**, and **distance tier**. Filtering should smoothly show/hide cards.
+- Each place is a **card**: name, one-line opinionated blurb, category tag, price tag (where relevant), distance tier, kid-friendly badge (where relevant), and a "Directions" link that opens the place in Google Maps (use a `https://www.google.com/maps/search/?api=1&query=<place+name+Seattle>` link — no Maps API key needed).
+- Optional but nice: a **section anchor map** isn't required; the per-card Google Maps links are enough for v1.
+- Keep copy **concise and in my voice** — opinionated, friendly, a little playful. Preserve the blurbs I wrote.
+
+## Site structure (sections, in order)
+
+1. **Hero** — a warm welcome to the neighborhood + a short **"where you are" blurb**: the unit sits comfortably at the crossroads of five Northeast Seattle neighborhoods — **View Ridge, Wedgwood, Ravenna, the U District, and Bryant** (the City of Seattle officially lists it in Bryant). That's the quiet luxury of the spot: minutes from the best of each — parks and beaches one way, bakeries and coffee another, and the U District's energy, dining, and light rail close by. Follow with one orienting line (walkable to the Burke-Gilman, minutes from Lake Washington beaches, easy to downtown). Mention the unit is the anchor point for all distances.
+2. **Right Outside Your Door** — the neighborhood essentials (groceries, neighborhood coffee/bakeries, neighborhood pizza, the parks). This section should be the most prominent.
+3. **Food & Drink — My Recommendations** — curated picks spanning the price range (casual → fine dining), plus sushi, burgers, pizza, coffee, and a Drinks subsection (breweries, wine, cocktails).
+4. **Explore Seattle** — the first-timer hit list.
+5. **Rainy-Day Plan** — indoor options.
+6. **Family & Kids**.
+7. **Live Music & Events** — a blurb + a live, auto-updating feed of upcoming shows (see "Live events module" below), plus the city's sports venues.
+8. **Neighborhoods to Explore**.
+9. **Practical / Good to Know** — health, pharmacy, a friendly safety note.
+10. **Getting Around** — transit, rideshare, bikes.
+11. **Skiing & Winter Sports** — the nearby mountains, plus where to buy/rent gear.
+12. **Day Trips** — for longer stays.
+
+## Tagging / filtering model
+
+Give every place these attributes so the filter bar works:
+
+- **Category:** Groceries · Coffee & Bakery · Pizza · Parks & Outdoors · Restaurants · Sushi · Burgers · Drinks · Coffee (specialty) · Shopping · Sights · Family · Skiing · Day Trip
+- **Price:** `$` to `$$$$` (only where it makes sense — skip for parks, etc.)
+- **Kid-friendly:** true/false badge (show the badge only when true)
+- **Distance tier** (relative to the unit): `Right outside` · `Neighborhood (~5–10 min)` · `Short drive (~10–20 min)` · `Across town (~20–35 min)` · `Day trip`
+
+(The tiers below are my rough estimates — render them as-is; I'll fine-tune later.)
+
+## Live events module (Live Music & Events section)
+
+Show a **live, auto-updating list of upcoming Seattle shows** (next ~14–30 days): performer, venue, date, and a "Tickets" link.
+
+**Primary source: SeatGeek Platform API.**
+- Build a small **backend route** (Node/Express or similar) that calls SeatGeek server-side and returns JSON to the frontend. **Do not call SeatGeek from the browser** and **do not hardcode the key** — read it from a Replit Secret named `SEATGEEK_CLIENT_ID`.
+- Query upcoming **concert/music events near Seattle** (e.g., `taxonomies.name=concert`, geo around lat `47.6062` / lon `-122.3321` with a range, `datetime_local.gte=now`, sorted ascending by date, limited to ~15 results).
+- Gracefully handle "no key yet" / errors by falling back (below) instead of breaking the page.
+
+**Fallback A (if I haven't gotten a SeatGeek key yet): Ticketmaster Discovery API** — same pattern, key in a Secret named `TICKETMASTER_API_KEY`, filter to music events in the Seattle market.
+
+**Fallback B (no API at all):** render a tidy "Check what's on this week" card with outbound links to Seattle event listings (SeatGeek Seattle, Bandsintown Seattle, The Stranger's events calendar) so the section is still useful with zero keys.
+
+Make it easy to switch which source is active via a single config flag/env var.
+
+## Technical notes
+
+- Keep it simple and reliable: a static-feeling frontend + one tiny backend for the events proxy. No database needed.
+- **No HTML `<form>` submits**; use normal click/change handlers for the filter bar.
+- Store all the curated place data in a single structured data file (JSON or a JS array of objects) so it's trivial for me to edit blurbs, tiers, and tags later.
+- Fast load, accessible (good contrast, semantic headings, keyboard-navigable filters).
+- Put any API keys in Replit Secrets; never expose them client-side.
+
+---
+
+# CURATED CONTENT
+
+## 2 — Right Outside Your Door
+
+**Groceries**
+- **Safeway** — closest full grocery run. *(Groceries · Neighborhood)*
+- **PCC Community Markets** — beloved NW co-op; excellent prepared foods, local produce, good beer/wine. *(Groceries · Short drive)*
+
+**Coffee & Bakery (neighborhood)**
+- **Grateful Bread** — neighborhood bakery; pastries and proper loaves. *(Coffee & Bakery · $ · Neighborhood · kid-friendly)*
+- **Top Pot Doughnuts** — a Seattle doughnut institution with great coffee. *(Coffee & Bakery · $ · Neighborhood · kid-friendly)*
+- **Grand Central Bakery** — rustic breads, pastries, easy breakfast. *(Coffee & Bakery · $ · Neighborhood · kid-friendly)*
+
+**Pizza (neighborhood)**
+- **Veraci Pizza** — wood-fired, blistered thin crust. *(Pizza · $$ · Neighborhood · kid-friendly)*
+- **Ridge Pizza** — the reliable neighborhood slice-and-pie spot. *(Pizza · $$ · Neighborhood · kid-friendly)*
+
+**Parks & Outdoors** *(the neighborhood's best asset)*
+- **Burke-Gilman Trail** — the legendary multi-use trail in all its glory; walk or bike for miles along the lake right from the neighborhood. *(Parks & Outdoors · Right outside · kid-friendly)*
+- **Matthews Beach Park** — the city's biggest Lake Washington swimming beach; prime summer water fun. *(Parks & Outdoors · Neighborhood · kid-friendly)*
+- **Magnuson Park** — sprawling lakefront park: swimming, sports fields, wetlands and an art walk, and Sand Point history. A whole afternoon. *(Parks & Outdoors · Neighborhood · kid-friendly)*
+- **View Ridge Playground** — family playground **with a splash pad** (summer). *(Parks & Outdoors · Family · Neighborhood · kid-friendly)*
+- **Bryant Playground** — quieter neighborhood playground for families. *(Parks & Outdoors · Family · Neighborhood · kid-friendly)*
+- **Green Lake** — the city's favorite loop for walking, running, and paddling; magical on a sunny day — be ready, because every Seattle local has the exact same idea, so it gets busy. *(Parks & Outdoors · Short drive · kid-friendly)*
+- **UW Campus & Burke Museum** — wander the gothic Quad (unreal cherry blossoms in late March), see natural history at the Burke and contemporary art at the Henry. *(Sights · Short drive · kid-friendly)*
+
+## 3 — Food & Drink — My Recommendations
+
+**Casual / cheap & great**
+- **Un Bien / Paseo** — unexpectedly transcendent Caribbean sandwiches; the Caribbean Roast is the move. *(Restaurants · $ · Short drive)*
+- **Dick's Drive-In** — classic, cheap Seattle burgers and a genuine rite of passage. *(Burgers · $ · Short drive · kid-friendly)*
+- **Burgermaster** — old-school drive-in burgers, eat in the car. *(Burgers · $ · Short drive · kid-friendly)*
+
+**Burgers (worth a special trip)**
+- **Taurus Ox / Ox Burger** — my favorite burger in Seattle. (Taurus Ox is the Laotian spot; Ox Burger is its burger offshoot.) *(Burgers · $$ · Across town)*
+
+**Sushi**
+- **Liberty** — a favorite local sushi spot (and a serious cocktail bar — see Drinks). *(Sushi · $$ · Across town)*
+- **Momiji** — favorite local sushi; lovely room and garden. *(Sushi · $$$ · Across town)*
+- **LTD Edition Sushi** — exceptional, intimate omakase. *(Sushi · $$$$ · Across town)*
+- **Sushi Kashiba** — exceptional; Shiro Kashiba is a Seattle legend. Splurge omakase. *(Sushi · $$$$ · Across town)*
+
+**Pizza**
+- **My Friend Derek** — my favorite pizza in the city. *(Pizza · $$ · Across town)*
+
+**Fine dining / special occasion**
+- **Canlis** — Seattle's iconic fine-dining institution: the view, the service, the occasion. *(Restaurants · $$$$ · Across town)*
+- **The Herbfarm** — a multi-course Pacific-Northwest tasting menu out in Woodinville; block out the whole evening. *(Restaurants · $$$$ · Day trip)*
+
+**Specialty coffee (beyond the neighborhood, worth it)**
+- **Herkimer Coffee** — excellent roaster/café. *(Coffee · $ · Across town · kid-friendly)*
+- **Milstead & Co.** — meticulous multi-roaster pour-overs. *(Coffee · $ · Across town · kid-friendly)*
+
+**Shopping**
+- **University Village (U Village)** — easy, upscale open-air shopping minutes from the unit. *(Shopping · Short drive · kid-friendly)*
+
+### Drinks
+
+**Breweries — close by**
+- **Human People Beer** — neighborhood brewery. *(Drinks · $$ · Neighborhood)*
+- **Ravenna Brewing** — easygoing local taproom. *(Drinks · $$ · Neighborhood)*
+- **Burke-Gilman Brewing** — right off the trail. *(Drinks · $$ · Neighborhood)*
+
+**Breweries — the Ballard Brewing District** *(a wonder of the world for beer lovers)*
+- **Stoup Brewing** — a personal favorite. *(Drinks · $$ · Across town)*
+- **Urban Family Brewing** — a personal favorite. *(Drinks · $$ · Across town)*
+- **Reuben's Brews** — a personal favorite. *(Drinks · $$ · Across town)*
+- *...and you really can't go wrong with any of them over there.*
+
+**Wine — Woodinville** *(one of the best places in the USA to taste wine)*
+- **Januik** — a personal favorite. *(Drinks · $$$ · Day trip)*
+- **Long Shadows** — a personal favorite. *(Drinks · $$$ · Day trip)*
+- **Matthews** — a personal favorite. *(Drinks · $$$ · Day trip)*
+- *...plus dozens more; it's genuinely hard to go wrong.*
+
+**Cocktails**
+- **Needle & Thread** (reservations; the hidden upstairs bar) **and Tavern Law** below it — among the best cocktails in the city. *(Drinks · $$$ · Across town)*
+- **Liberty** — superb cocktails (and the sushi above). *(Drinks · $$ · Across town)*
+- **Zig Zag Café** — a pilgrimage worth making. *(Drinks · $$$ · Across town)*
+- **Canon** — genuinely a top-5 whisk(e)y bar in the nation. Prices are high, but for any whisk(e)y connoisseur it's a must-visit, and the cocktails are wildly inventive too. *(Drinks · $$$$ · Across town)*
+
+## 4 — Explore Seattle *(the iconic stuff, done efficiently)*
+
+- **Pike Place Market** — the original public market; go early to beat the crowds. *(Sights · Across town · kid-friendly)*
+- **Waterfront & Overlook Walk** — the new park-deck linking downtown to the water. *(Sights · Across town · kid-friendly)*
+- **Seattle Center** — Space Needle, Chihuly Garden & Glass, and MoPOP all in one spot. *(Sights · Across town · kid-friendly)*
+- **Discovery Park** — bluffs, a lighthouse, and beach; the city's wildest big park. *(Parks & Outdoors · Across town · kid-friendly)*
+- **Bainbridge / Bremerton Ferry** — walk on for the cheapest and best "cruise" in town; spectacular skyline on the way back. *(Sights · Across town · kid-friendly)*
+- **Seattle Underground Tour** — explore Pioneer Square's buried storefronts; quirky, genuinely fun local history. *(Sights · Across town · kid-friendly)*
+
+## 5 — Rainy-Day Plan
+
+- **Burke Museum** & **Henry Art Gallery** (UW) *(Sights · Short drive · kid-friendly)*
+- **Museum of Flight** — world-class, hands-on. *(Sights · Across town · kid-friendly)*
+- **Pacific Science Center** — great with kids. *(Sights · Family · Across town · kid-friendly)*
+- **The breweries** above, and **U Village** for covered shopping. *(Shopping · Short drive)*
+- Post up with a book at a great café — **Herkimer**, **Milstead**, or **Top Pot**. *(Coffee · kid-friendly)*
+
+## 6 — Family & Kids
+
+- **View Ridge splash pad & playground** and **Bryant Playground** (see Parks). *(Family · Neighborhood · kid-friendly)*
+- **Woodland Park Zoo** *(Family · Short drive · kid-friendly)*
+- **Seattle Aquarium** *(Family · Across town · kid-friendly)*
+- **Pacific Science Center** *(Family · Across town · kid-friendly)*
+- **Museum of Flight** *(Family · Across town · kid-friendly)*
+- **KidsQuest Children's Museum** (Bellevue) *(Family · Across town · kid-friendly)*
+- **U District Farmers Market** (Saturdays) — fun, close family outing. *(Family · Short drive · kid-friendly)*
+
+## 7 — Live Music & Events
+
+**Blurb:** Seattle's music scene is genuinely world-class — the birthplace of grunge, with deep jazz and indie roots and a packed calendar of touring acts and local shows on any given week. It's always worth a glance at who's in town during your stay.
+
+*(Render the live events feed here — see "Live events module" above.)*
+
+**Sports & big venues**
+- **UW Huskies** — Husky Stadium (right next door). *(Sights · Short drive)*
+- **Seattle Mariners** — T-Mobile Park. *(Sights · Across town)*
+- **Seattle Kraken** — Climate Pledge Arena. *(Sights · Across town)*
+- **Seahawks / Sounders** — Lumen Field. *(Sights · Across town)*
+- **Summer concert series** — e.g., the Chateau Ste. Michelle series out in Woodinville. *(Sights · Day trip)*
+
+**Women's sports** *(Seattle shows up huge for its women's teams — these games are a genuine blast and very worth catching)*
+- **Seattle Storm** (WNBA basketball) — Climate Pledge Arena. A beloved, perennially competitive franchise. *(Sights · Across town · kid-friendly)*
+- **Seattle Reign FC** (NWSL soccer) — Lumen Field. World-class women's soccer; check the schedule, since a few 2026 dates were shuffled around while Lumen preps for the men's World Cup. *(Sights · Across town · kid-friendly)*
+- **Seattle Torrent** (PWHL women's hockey) — Climate Pledge Arena. Brand-new expansion team that's been packing the building and breaking U.S. women's-hockey attendance records — a fantastic, high-energy night out. *(Sights · Across town · kid-friendly)*
+
+> **Heads-up — bag policy at Lumen Field & Climate Pledge Arena:** both venues enforce a strict **clear-bag-only** policy (diaper bags are the main exception), and they are *very* serious about it. The real move is to **bring no bag at all** — the bag-check line runs roughly 10× longer than the no-bag entry, so you'll get in far faster empty-handed.
+
+## 8 — Neighborhoods to Explore
+
+- **Ballard** — the brewing district, a great Sunday farmers market, and the Ballard Locks.
+- **Fremont** — the Troll under the bridge, quirky shops, Sunday market.
+- **Wallingford** — laid-back, good eats, with Gas Works Park nearby.
+- **Capitol Hill** — the city's nightlife, dining, and live-music core.
+- **U District** — student energy, cheap eats, and "the Ave."
+
+## 9 — Practical / Good to Know
+
+- **Urgent care & ER:** UW Medical Center and Northwest Hospital are both close; **Seattle Children's** is right in the neighborhood.
+- **Pharmacy:** the **Safeway pharmacy** (same store as the grocery run above) is the nearest. Note that Seattle no longer has a true 24-hour pharmacy, so plan prescription pickups during normal hours.
+- **Police non-emergency line** for minor issues.
+- **Friendly heads-up:** don't leave anything visible in a parked car — car prowls are the one local annoyance visitors get caught by. Take valuables with you.
+
+## 10 — Getting Around
+
+- **ORCA cards & buses** — the local transit pass. Android users can add an ORCA card right to their phone; either way you can just **tap to pay** (contactless card/phone) when you board. *(There are several bus stops within a short walk of the unit.)*
+- **Link light rail (Sound Transit)** — the easiest, most reliable way to/from **SEA airport**, and quick to downtown.
+- **Lyft & Uber** — both work everywhere; just note the **extra airport pickup/dropoff fee**.
+- **Lime** — e-bikes and scooters dotted around the city for short hops.
+
+## 11 — Skiing & Winter Sports *(I love to ski, so this one's close to my heart)*
+
+Some of the best skiing in the country sits within day-trip range of the house. Roughly in order of distance:
+
+- **The Summit at Snoqualmie (incl. Alpental)** — the closest, about an hour east on I-90. Four areas (Summit West, Central, and East, plus **Alpental**) cover everyone: mellow, family-friendly groomers and **night skiing** at the Summit areas, and serious steep terrain at Alpental. Ideal for a half-day or after-lunch laps. (Ikon Pass.) *(Skiing · Day trip)*
+- **Stevens Pass** — about 1.5–2 hrs north on US-2. A bigger-mountain feel with great variety and legendary tree skiing. (Epic Pass.) *(Skiing · Day trip)*
+- **Crystal Mountain** — about 1.5–2 hrs southeast, right by Mt Rainier. Washington's largest ski area, with the highest lift-served terrain in the state and a gondola with jaw-dropping Rainier views. (Ikon Pass.) *(Skiing · Day trip)*
+- **Mt Baker** — about 2.5–3 hrs north. A no-frills, independent powder mecca that famously holds the world record for the most snowfall in a single season. Worth the drive on a big powder day. *(Skiing · Day trip)*
+
+**Gear — buy or rent**
+- **evo** — the local action-sports institution; flagship in **Fremont** (3500 Stone Way N) with a full ski/snowboard shop, rentals, boot fitting, and tuning. They also run a satellite rental shop **right at Snoqualmie Pass** (across from Summit West) if you'd rather grab gear on the way up. *(Skiing · Shopping)*
+- **REI Flagship** — the original, iconic **REI** is right here in Seattle (222 Yale Ave N, South Lake Union). Beyond ski/snowboard gear, rentals, and shop services, the store is a Seattle attraction in its own right — an 80,000-sq-ft "timbered cathedral" with a 65-foot indoor climbing pinnacle, an outdoor bike-test trail, and a café. Worth a stop even in summer. *(Skiing · Shopping · Sights · kid-friendly)*
+
+## 12 — Day Trips *(for longer stays)*
+
+- **Mount Rainier National Park** — the mountain up close. *(Day Trip)*
+- **Snoqualmie Falls + Salish Lodge** — a dramatic waterfall, ~40 min out. *(Day Trip)*
+- **Leavenworth** — the Bavarian-themed mountain town. *(Day Trip)*
+- **San Juan Islands** — whales, slow island time, and some of the prettiest scenery in the state. **Getting there:** drive up to **Anacortes** (~1.5 hrs north) to catch the Washington State Ferry. **If you're bringing a car, make a ferry reservation** — sailings sell out, especially in the evenings. The insider trick: you can almost always **walk on** without a reservation, then get around by bike, shuttle, or local rental once you're there. **My two favorite spots:** **Orcas Island** (base yourself in **Eastsound**) and **San Juan Island** (**Friday Harbor**). *(Day Trip)*
+- **Woodinville wine country** — see the wine picks above. *(Day Trip)*
+
+---
+
+*End of prompt. Once the first version builds, I'll fine-tune distance tiers and prices.*
