@@ -696,7 +696,7 @@ export default function Home() {
             <h2 className="font-serif text-3xl md:text-4xl text-foreground">Beyond the City</h2>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid gap-12">
             <div>
               <h3 className="font-serif text-2xl mb-6 text-foreground/90">Skiing & Winter Sports</h3>
               <div className="space-y-4 mb-6">
