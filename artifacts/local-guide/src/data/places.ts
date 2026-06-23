@@ -48,10 +48,10 @@ export const places: Place[] = [
   { id: 'p14', name: 'University of Washington', blurb: "One of the most beautiful campuses in the country. The cherry blossom Quad in late March is legendary — rows of Yoshino cherries line the gothic buildings, petals drifting everywhere. Worth a wander any time of year; the campus itself is the attraction.", category: 'Sights', distanceTier: 'Short drive', kidFriendly: true, section: 2, image: '/images/uw.jpg' },
 
   // Section 3 — Casual
-  { id: 'p15', name: 'Un Bien', blurb: 'Unexpectedly transcendent Caribbean sandwiches; the Caribbean Roast is the move.', category: 'Restaurants', price: '$', distanceTier: 'Short drive', kidFriendly: false, section: 3 },
+  { id: 'p15', name: 'Un Bien', blurb: 'Unexpectedly transcendent Caribbean sandwiches; the Caribbean Roast is the move.', category: 'Restaurants', price: '$', distanceTier: 'Short drive', kidFriendly: false, section: 3, image: '/images/unbien.jpg' },
   { id: 'p16', name: "Dick's Drive-In", blurb: 'Classic, cheap Seattle burgers and a genuine rite of passage.', category: 'Burgers', price: '$', distanceTier: 'Short drive', kidFriendly: true, section: 3, image: '/images/dicks.jpg' },
   { id: 'p17', name: 'Burgermaster', blurb: 'Old-school drive-in burgers; eat in the car.', category: 'Burgers', price: '$', distanceTier: 'Short drive', kidFriendly: true, section: 3, image: '/images/burgermaster.jpg' },
-  { id: 'p18', name: 'Taurus Ox / Ox Burger', blurb: 'My favorite burger in Seattle. Taurus Ox is the Laotian spot; Ox Burger is its burger offshoot.', category: 'Burgers', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p18', name: 'Taurus Ox / Ox Burger', blurb: 'My favorite burger in Seattle. Taurus Ox is the Laotian spot; Ox Burger is its burger offshoot.', category: 'Burgers', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3, image: '/images/taurusox.jpg' },
 
   // Section 3 — Sushi
   { id: 'p19', name: 'Liberty', blurb: 'A favorite local sushi spot with a serious cocktail program to match.', category: 'Sushi', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3, image: '/images/liberty.jpg' },
@@ -69,11 +69,11 @@ export const places: Place[] = [
   { id: 'p27', name: 'Milstead & Co.', blurb: 'Meticulous multi-roaster pour-overs in a beautiful room.', category: 'Coffee', price: '$', distanceTier: 'Across town', kidFriendly: true, section: 3, image: '/images/milstead.jpg' },
 
   // Section 3 — Shopping
-  { id: 'p28', name: 'University Village (U Village)', blurb: "Easy, upscale open-air shopping minutes from the unit. Good anchor stores: Apple, Backcountry, Away Luggage, North Face, Lululemon, and Vuori. For food, Ba Bar (Vietnamese) and Mr. West (café/bar) are both solid picks right in the complex.", category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 3 },
+  { id: 'p28', name: 'University Village (U Village)', blurb: "Easy, upscale open-air shopping minutes from the unit. Good anchor stores: Apple, Backcountry, Away Luggage, North Face, Lululemon, and Vuori. For food, Ba Bar (Vietnamese) and Mr. West (café/bar) are both solid picks right in the complex.", category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 3, image: '/images/uvillage.jpg' },
 
   // Section 3 — Neighborhood Breweries
   { id: 'p29', name: 'Human People Beer', blurb: "Solid neighborhood brewery with a welcoming taproom. They normally have great pizza, and some nights will have an amazing food pop-up — worth checking their Instagram before you go.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3, image: '/images/humanpeoplebeer.jpg' },
-  { id: 'p30', name: 'Ravenna Brewing', blurb: "Easygoing local taproom with one of the best patios in the neighborhood for a beer outside. They usually have a food truck on-site, so you can make a proper meal of it.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
+  { id: 'p30', name: 'Ravenna Brewing', blurb: "Easygoing local taproom with one of the best patios in the neighborhood for a beer outside. They usually have a food truck on-site, so you can make a proper meal of it.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3, image: '/images/ravenna.jpg' },
   { id: 'p31', name: 'Burke-Gilman Brewing', blurb: "Right off the trail — the obvious stop after a bike ride. The El Camion food truck is around the corner, so you can get a burrito and a beer together. Good combo.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3, image: '/images/burkegilmanbrewing.jpg' },
 
   // Section 3 — Ballard Brewing District
@@ -91,9 +91,9 @@ export const places: Place[] = [
   { id: 'p58', name: 'DeLille Cellars', blurb: "If you love white wine, this is the winery to visit. Their whites — particularly the Chaleur Blanc — are some of the best in Washington. The reds are excellent too, but don't sleep on the whites.", category: 'Winery', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3, image: '/images/delille.jpg' },
 
   // Section 3 — Cocktails
-  { id: 'p38', name: 'Needle & Thread / Tavern Law', blurb: "Among the best cocktails in the city. Needle & Thread is an upstairs speakeasy (reservations required) — no menu, they just make you something custom. Tavern Law is the excellent bar downstairs if you can't get a reservation.", category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p38', name: 'Needle & Thread / Tavern Law', blurb: "Among the best cocktails in the city. Needle & Thread is an upstairs speakeasy (reservations required) — no menu, they just make you something custom. Tavern Law is the excellent bar downstairs if you can't get a reservation.", category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3, image: '/images/needleandthread.jpg' },
   { id: 'p59', name: 'Inside Passage / Rumba', blurb: "Rumba is a great tiki bar — excellent tiki cocktails and solid food in a lovely room. Inside Passage is the speakeasy hidden inside (reservations required); an intimate, serious cocktail experience tucked behind the tiki bar.", category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3, image: '/images/insidepassage.jpg' },
-  { id: 'p39', name: 'Zig Zag Café', blurb: "A pilgrimage worth making — unpretentious, impeccable. Famous for reviving the Last Word cocktail; order one. Frequently has live music, which makes an already great bar even better.", category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p39', name: 'Zig Zag Café', blurb: "A pilgrimage worth making — unpretentious, impeccable. Famous for reviving the Last Word cocktail; order one. Frequently has live music, which makes an already great bar even better.", category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3, image: '/images/zigzagcafe.jpg' },
   { id: 'p40', name: 'Canon', blurb: "Genuinely a top-5 whisk(e)y bar in the nation. For any whisk(e)y lover it's a must-visit; wildly inventive cocktails too.", category: 'Cocktails', price: '$$$$', distanceTier: 'Across town', kidFriendly: false, section: 3, image: '/images/canon.jpg' },
 
   // Section 4 — Explore Seattle
@@ -108,7 +108,7 @@ export const places: Place[] = [
   { id: 'p47', name: 'Burke Museum & Henry Art Gallery (UW)', blurb: 'Two great museums on one campus.', category: 'Sights', distanceTier: 'Short drive', kidFriendly: true, section: 5, image: '/images/burke-museum.jpg' },
   { id: 'p48', name: 'Museum of Flight', blurb: 'World-class, hands-on — genuinely one of the best of its kind.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 5 },
   { id: 'p49', name: 'Pacific Science Center', blurb: 'Great with kids; easy afternoon at Seattle Center.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 5 },
-  { id: 'p50', name: 'U Village', blurb: "Covered shopping on a rainy afternoon, minutes from the unit. Apple, Backcountry, North Face, Lululemon, Vuori, and Away are all here. Grab food at Ba Bar or Mr. West while you're at it.", category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 5 },
+  { id: 'p50', name: 'U Village', blurb: "Covered shopping on a rainy afternoon, minutes from the unit. Apple, Backcountry, North Face, Lululemon, Vuori, and Away are all here. Grab food at Ba Bar or Mr. West while you're at it.", category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 5, image: '/images/uvillage.jpg' },
 
   // Section 6 — Family & Kids
   { id: 'p51', name: 'View Ridge Playground & Splash Pad', blurb: 'Splash pad in summer, great year-round playground.', category: 'Family', distanceTier: 'Neighborhood', kidFriendly: true, section: 6, image: '/images/viewridgeplayground.jpg' },
