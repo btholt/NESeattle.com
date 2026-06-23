@@ -83,9 +83,9 @@ export const places: Place[] = [
   { id: 'p57', name: 'Holy Mountain Brewing', blurb: 'One of my favorite breweries in the city, renowned for its oak- and barrel-aged and mixed-fermentation beers. This Greenwood taproom is the all-ages location (the original Interbay spot is 21+).', category: 'Drinks', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
 
   // Section 3 — Wine
-  { id: 'p35', name: 'Januik', blurb: 'Polished, food-friendly Washington reds; a reliable, classy pour.', category: 'Drinks', price: '$$$', distanceTier: 'Day trip', kidFriendly: false, section: 3 },
-  { id: 'p36', name: 'Long Shadows', blurb: 'Big, serious reds from a who\'s-who of winemakers — a real standout.', category: 'Drinks', price: '$$$', distanceTier: 'Day trip', kidFriendly: false, section: 3 },
-  { id: 'p37', name: 'Matthews', blurb: 'Consistently excellent estate reds; it just doesn\'t miss.', category: 'Drinks', price: '$$$', distanceTier: 'Day trip', kidFriendly: false, section: 3 },
+  { id: 'p35', name: 'Januik Winery', blurb: 'Polished, food-friendly Washington reds; a reliable, classy pour.', category: 'Drinks', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p36', name: 'Long Shadows Winery', blurb: 'Big, serious reds from a who\'s-who of winemakers — a real standout.', category: 'Drinks', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p37', name: 'Matthews Winery', blurb: 'Consistently excellent estate reds; it just doesn\'t miss.', category: 'Drinks', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
 
   // Section 3 — Cocktails
   { id: 'p38', name: 'Needle & Thread / Tavern Law', blurb: 'Among the best cocktails in the city; Needle & Thread is the hidden upstairs bar (reservations), Tavern Law below it.', category: 'Drinks', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
