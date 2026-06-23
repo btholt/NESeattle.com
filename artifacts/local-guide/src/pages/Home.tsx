@@ -703,24 +703,54 @@ export default function Home() {
                 {[
                   {
                     name: "The Summit at Snoqualmie",
-                    desc: "Closest, ~1 hr east on I-90. Mellow family groomers and night skiing, plus serious steep terrain at Alpental. (Ikon Pass)",
+                    drive: "~1 hr east on I-90",
+                    desc: "Closest resort and a great default. It's actually four areas in one — Alpental, Summit Central, Summit East, and Summit West. Alpental has the best terrain of the bunch but can get crowded, especially on powder days. Otherwise a chill, lovely resort — particularly good for kids and families.",
+                    map: "/images/snoqualmie.jpg",
+                    passes: ["ikon"],
                   },
                   {
                     name: "Stevens Pass",
-                    desc: "~1.5–2 hrs north on US-2. Bigger-mountain feel, great variety, legendary tree skiing. (Epic Pass)",
+                    drive: "~1.5–2 hrs north on US-2",
+                    desc: "Great terrain and a genuinely fun resort. One key tip: leave early. You want to secure a parking spot at the resort itself — if you don't, they make you shuttle in from fairly far away. Aim to arrive 30–60 minutes before first chair.",
+                    map: "/images/stevens.jpg",
+                    passes: ["epic"],
                   },
                   {
                     name: "Crystal Mountain",
-                    desc: "~1.5–2 hrs southeast. Washington's largest ski area; gondola with jaw-dropping Rainier views. (Ikon Pass)",
+                    drive: "~2 hrs southeast",
+                    desc: "Washington's largest ski area, and probably the best resort in the state if you have the time for the drive. Gondola at the top with jaw-dropping views of Mt. Rainier. The spring skiing here is particularly amazing.",
+                    map: "/images/crystal.jpg",
+                    passes: ["ikon"],
                   },
                   {
-                    name: "Mt Baker",
-                    desc: "~2.5–3 hrs north. No-frills powder mecca; holds the world record for most snowfall in a single season.",
+                    name: "Mt. Baker",
+                    drive: "~2.5–3 hrs north",
+                    desc: "Wild terrain and massive powder days — holds the world record for most snowfall in a single season (1,140 inches in 1998–99). If you're an advanced skier looking for challenging terrain, this is among the best in the world. Note: Baker is independent and not on Epic, Ikon, or Indy passes.",
+                    map: "/images/mtbaker.jpg",
+                    passes: [],
                   },
                 ].map((mountain) => (
-                  <div key={mountain.name} className="bg-card border border-border p-5 rounded-xl shadow-sm">
-                    <h4 className="font-serif font-medium text-lg mb-2">{mountain.name}</h4>
-                    <p className="text-sm text-muted-foreground">{mountain.desc}</p>
+                  <div key={mountain.name} className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
+                    <a href={mountain.map} target="_blank" rel="noopener noreferrer" className="block">
+                      <img src={mountain.map} alt={`${mountain.name} trail map`} className="w-full h-36 object-cover object-top hover:opacity-90 transition-opacity" />
+                    </a>
+                    <div className="p-4">
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <h4 className="font-serif font-medium text-lg">{mountain.name}</h4>
+                        {mountain.passes.length > 0 && (
+                          <div className="flex gap-1.5 shrink-0">
+                            {mountain.passes.includes("ikon") && (
+                              <img src="/images/ikon.jpg" alt="Ikon Pass" className="h-5 w-auto rounded object-contain" />
+                            )}
+                            {mountain.passes.includes("epic") && (
+                              <img src="/images/epic.jpg" alt="Epic Pass" className="h-5 w-auto rounded object-contain" />
+                            )}
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-xs text-primary/70 font-medium mb-2">{mountain.drive}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{mountain.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
