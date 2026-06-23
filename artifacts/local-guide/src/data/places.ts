@@ -30,19 +30,19 @@ export interface Place {
 
 export const places: Place[] = [
   // Section 2
-  { id: 'p1', name: 'Safeway', blurb: 'Closest full grocery run.', category: 'Groceries', distanceTier: 'Neighborhood', kidFriendly: false, section: 2 },
-  { id: 'p2', name: 'PCC Community Markets', blurb: 'Beloved NW co-op; excellent prepared foods, local produce, good beer/wine.', category: 'Groceries', distanceTier: 'Short drive', kidFriendly: false, section: 2 },
-  { id: 'p3', name: 'Grateful Bread', blurb: 'Neighborhood bakery; pastries and proper loaves.', category: 'Coffee & Bakery', price: '$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
-  { id: 'p4', name: 'Top Pot Doughnuts', blurb: 'A Seattle doughnut institution with great coffee.', category: 'Coffee & Bakery', price: '$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
-  { id: 'p5', name: 'Grand Central Bakery', blurb: 'Rustic breads, pastries, easy breakfast.', category: 'Coffee & Bakery', price: '$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
-  { id: 'p6', name: 'Veraci Pizza', blurb: 'Wood-fired, blistered thin crust.', category: 'Pizza', price: '$$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
-  { id: 'p7', name: 'Ridge Pizza', blurb: 'The reliable neighborhood slice-and-pie spot.', category: 'Pizza', price: '$$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
-  { id: 'p8', name: 'Burke-Gilman Trail', blurb: 'The legendary multi-use trail; walk or bike for miles along the lake right from the neighborhood.', category: 'Parks & Outdoors', distanceTier: 'Right outside', kidFriendly: true, section: 2 },
-  { id: 'p9', name: 'Matthews Beach Park', blurb: "The city's biggest Lake Washington swimming beach; prime summer water fun.", category: 'Parks & Outdoors', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
-  { id: 'p10', name: 'Magnuson Park', blurb: 'Sprawling lakefront park: swimming, sports fields, wetlands and art walk, and Sand Point history. A whole afternoon.', category: 'Parks & Outdoors', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
-  { id: 'p11', name: 'View Ridge Playground', blurb: 'Family playground with a splash pad in summer.', category: 'Parks & Outdoors', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
-  { id: 'p12', name: 'Bryant Playground', blurb: 'Quieter neighborhood playground for families.', category: 'Parks & Outdoors', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
-  { id: 'p13', name: 'Green Lake', blurb: "The city's favorite loop for walking, running, and paddling; magical on a sunny day — be ready, every Seattle local has the same idea, so it gets busy.", category: 'Parks & Outdoors', distanceTier: 'Short drive', kidFriendly: true, section: 2 },
+  { id: 'p1', name: 'Safeway', blurb: 'Closest full grocery run.', category: 'Groceries', distanceTier: 'Neighborhood', kidFriendly: false, section: 2, image: '/images/safeway.jpg' },
+  { id: 'p2', name: 'PCC Community Markets', blurb: 'Beloved NW co-op; excellent prepared foods, local produce, good beer/wine.', category: 'Groceries', distanceTier: 'Short drive', kidFriendly: false, section: 2, image: '/images/pcc.jpg' },
+  { id: 'p3', name: 'Grateful Bread', blurb: 'Neighborhood bakery; pastries and proper loaves.', category: 'Coffee & Bakery', price: '$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/gratefulbread.jpg' },
+  { id: 'p4', name: 'Top Pot Doughnuts', blurb: 'A Seattle doughnut institution with great coffee.', category: 'Coffee & Bakery', price: '$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/toppot.jpg' },
+  { id: 'p5', name: 'Grand Central Bakery', blurb: 'Rustic breads, pastries, easy breakfast.', category: 'Coffee & Bakery', price: '$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/grandcentral.jpg' },
+  { id: 'p6', name: 'Veraci Pizza', blurb: 'Wood-fired, blistered thin crust.', category: 'Pizza', price: '$$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/veraci.jpg' },
+  { id: 'p7', name: 'Ridge Pizza', blurb: 'The reliable neighborhood slice-and-pie spot.', category: 'Pizza', price: '$$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/ridge.jpg' },
+  { id: 'p8', name: 'Burke-Gilman Trail', blurb: 'The legendary multi-use trail; walk or bike for miles along the lake right from the neighborhood.', category: 'Parks & Outdoors', distanceTier: 'Right outside', kidFriendly: true, section: 2, image: '/images/burkegilmantrail.jpg' },
+  { id: 'p9', name: 'Matthews Beach Park', blurb: "The city's biggest Lake Washington swimming beach; prime summer water fun.", category: 'Parks & Outdoors', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/matthewsbeach.jpg' },
+  { id: 'p10', name: 'Magnuson Park', blurb: 'Sprawling lakefront park: swimming, sports fields, wetlands and art walk, and Sand Point history. A whole afternoon.', category: 'Parks & Outdoors', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/magnusonpark.jpg' },
+  { id: 'p11', name: 'View Ridge Playground', blurb: 'Family playground with a splash pad in summer.', category: 'Parks & Outdoors', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/viewridgeplayground.jpg' },
+  { id: 'p12', name: 'Bryant Playground', blurb: 'Quieter neighborhood playground for families.', category: 'Parks & Outdoors', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/bryantplayground.jpg' },
+  { id: 'p13', name: 'Green Lake', blurb: "The city's favorite loop for walking, running, and paddling; magical on a sunny day — be ready, every Seattle local has the same idea, so it gets busy.", category: 'Parks & Outdoors', distanceTier: 'Short drive', kidFriendly: true, section: 2, image: '/images/greenlake.jpg' },
   { id: 'p14', name: 'University of Washington', blurb: "One of the most beautiful campuses in the country. The cherry blossom Quad in late March is legendary — rows of Yoshino cherries line the gothic buildings, petals drifting everywhere. Worth a wander any time of year; the campus itself is the attraction.", category: 'Sights', distanceTier: 'Short drive', kidFriendly: true, section: 2, image: '/images/uw.jpg' },
 
   // Section 3 — Casual
@@ -107,8 +107,8 @@ export const places: Place[] = [
   { id: 'p50', name: 'U Village', blurb: 'Covered shopping on a rainy afternoon, minutes from the unit.', category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 5 },
 
   // Section 6 — Family & Kids
-  { id: 'p51', name: 'View Ridge Playground & Splash Pad', blurb: 'Splash pad in summer, great year-round playground.', category: 'Family', distanceTier: 'Neighborhood', kidFriendly: true, section: 6 },
-  { id: 'p52', name: 'Bryant Playground', blurb: 'Quieter neighborhood park for families.', category: 'Family', distanceTier: 'Neighborhood', kidFriendly: true, section: 6 },
+  { id: 'p51', name: 'View Ridge Playground & Splash Pad', blurb: 'Splash pad in summer, great year-round playground.', category: 'Family', distanceTier: 'Neighborhood', kidFriendly: true, section: 6, image: '/images/viewridgeplayground.jpg' },
+  { id: 'p52', name: 'Bryant Playground', blurb: 'Quieter neighborhood park for families.', category: 'Family', distanceTier: 'Neighborhood', kidFriendly: true, section: 6, image: '/images/bryantplayground.jpg' },
   { id: 'p53', name: 'Woodland Park Zoo', blurb: 'A classic Seattle family outing.', category: 'Family', distanceTier: 'Short drive', kidFriendly: true, section: 6 },
   { id: 'p54', name: 'Seattle Aquarium', blurb: 'Right on the waterfront; great for kids of all ages.', category: 'Family', distanceTier: 'Across town', kidFriendly: true, section: 6, image: '/images/aquarium.jpg' },
   { id: 'p55', name: "KidsQuest Children's Museum", blurb: 'In Bellevue; great for younger kids.', category: 'Family', distanceTier: 'Across town', kidFriendly: true, section: 6 },
