@@ -105,7 +105,7 @@ export const places: Place[] = [
   { id: 'p43', name: 'Seattle Center', blurb: 'Space Needle, Chihuly Garden & Glass, and MoPOP all in one spot.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4, image: '/images/chihuly.jpg' },
   { id: 'p44', name: 'Discovery Park', blurb: "Bluffs, a lighthouse, and beach; the city's wildest big park.", category: 'Parks & Outdoors', distanceTier: 'Across town', kidFriendly: true, section: 4 },
   { id: 'p45', name: 'Bainbridge / Bremerton Ferry', blurb: 'Walk on for the cheapest and best "cruise" in town; spectacular skyline on the way back.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4, image: '/images/bainbridge.jpg' },
-  { id: 'p46', name: 'Seattle Underground Tour', blurb: "Explore Pioneer Square's buried storefronts; quirky, genuinely fun local history.", category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4 },
+  { id: 'p46', name: "Bill Speidel's Underground Tour", blurb: "The best way to learn Seattle's history — explore Pioneer Square's buried storefronts on a guided tour that's quirky, funny, and genuinely fascinating.", category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4 },
 
   // Section 5 — Rainy Day
   { id: 'p47', name: 'Burke Museum & Henry Art Gallery (UW)', blurb: 'Two great museums on one campus.', category: 'Sights', distanceTier: 'Short drive', kidFriendly: true, section: 5, image: '/images/burke-museum.jpg' },
