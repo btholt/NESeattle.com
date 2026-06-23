@@ -794,7 +794,7 @@ export default function Home() {
                   },
                 ].map((trip) => (
                   <div key={trip.name} className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
-                    <img src={trip.image} alt={trip.name} className="w-full h-44 object-cover" />
+                    <img src={trip.image} alt={trip.name} className="w-full h-64 object-cover" />
                     <div className="p-4">
                       <h4 className="font-serif font-medium text-lg mb-0.5">{trip.name}</h4>
                       <p className="text-xs text-primary/70 font-medium mb-2">{trip.drive}</p>
@@ -804,7 +804,7 @@ export default function Home() {
                 ))}
 
                 <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
-                  <img src="/images/eastsound.jpg" alt="Eastsound, Orcas Island" className="w-full h-44 object-cover" />
+                  <img src="/images/eastsound.jpg" alt="Eastsound, Orcas Island" className="w-full h-64 object-cover" />
                   <div className="p-4">
                     <h4 className="font-serif font-medium text-lg mb-0.5">San Juan Islands</h4>
                     <p className="text-xs text-primary/70 font-medium mb-2">~1.5 hrs to Anacortes ferry terminal</p>
