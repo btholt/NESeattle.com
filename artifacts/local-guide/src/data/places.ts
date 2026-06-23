@@ -70,7 +70,7 @@ export const places: Place[] = [
   { id: 'p28', name: 'University Village (U Village)', blurb: 'Easy, upscale open-air shopping minutes from the unit.', category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 3 },
 
   // Section 3 — Neighborhood Breweries
-  { id: 'p29', name: 'Human People Beer', blurb: 'Solid neighborhood brewery with a welcoming taproom.', category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
+  { id: 'p29', name: 'Human People Beer', blurb: "Solid neighborhood brewery with a welcoming taproom. They normally have great pizza, and some nights will have an amazing food pop-up — worth checking their Instagram before you go.", category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
   { id: 'p30', name: 'Ravenna Brewing', blurb: "Easygoing local taproom with one of the best patios in the neighborhood for a beer outside. They usually have a food truck on-site, so you can make a proper meal of it.", category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
   { id: 'p31', name: 'Burke-Gilman Brewing', blurb: "Right off the trail — the obvious stop after a bike ride. The El Camion food truck is around the corner, so you can get a burrito and a beer together. Good combo.", category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
 
