@@ -560,7 +560,7 @@ export default function Home() {
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
                   { name: "UW Huskies", detail: "Husky Stadium (football) · Alaska Airlines Arena (basketball) — both right next door. The college game atmosphere here is legitimately great.", logo: "/images/uw.png" },
-                  { name: "Seattle Mariners", detail: "T-Mobile Park — one of the best baseball experiences in the league; catch a summer game with the roof open if the weather holds.", emoji: "⚾" },
+                  { name: "Seattle Mariners", detail: "T-Mobile Park — one of the best baseball experiences in the league; catch a summer game with the roof open if the weather holds.", logo: "/images/mariners.png" },
                   { name: "Seattle Kraken", detail: "Climate Pledge Arena — Seattle's NHL franchise, playing in one of the greenest arenas in the world. Great atmosphere even for casual fans.", logo: "/images/kraken.png" },
                   { name: "Seattle Seahawks", detail: "Lumen Field — one of the loudest stadiums in the NFL. The 12s make it a genuine home-field advantage; the noise is real.", logo: "/images/seahawk.png" },
                   { name: "Seattle Sounders FC", detail: "Lumen Field — the most decorated MLS club in history, with a passionate supporter section and a World Cup-level atmosphere on big nights.", logo: "/images/sounders.png" },
@@ -573,12 +573,14 @@ export default function Home() {
                   { name: "The 5th Avenue Theatre", detail: "Gorgeous 1926 Chinese-inspired theater; world-class musicals including many pre-Broadway tryouts that debut here first.", emoji: "🎭" },
                 ].map((venue, i) => (
                   <div key={i} className="bg-card p-4 rounded-lg border border-border shadow-sm flex flex-col">
-                    {'logo' in venue && venue.logo ? (
-                      <img src={venue.logo} alt={venue.name} className="h-8 w-auto object-contain mb-2 self-start" />
-                    ) : (
-                      <span className="text-2xl mb-2 leading-none">{'emoji' in venue ? venue.emoji : ''}</span>
-                    )}
-                    <h4 className="font-serif font-medium mb-1 text-foreground">{venue.name}</h4>
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <h4 className="font-serif font-medium text-foreground">{venue.name}</h4>
+                      {'logo' in venue && venue.logo ? (
+                        <img src={venue.logo} alt={venue.name} className="h-7 w-auto object-contain shrink-0" />
+                      ) : (
+                        <span className="text-xl leading-none shrink-0">{'emoji' in venue ? venue.emoji : ''}</span>
+                      )}
+                    </div>
                     <p className="text-xs text-muted-foreground leading-snug">{venue.detail}</p>
                   </div>
                 ))}
