@@ -8,7 +8,9 @@ export type Category =
   | 'Sushi'
   | 'Coffee'
   | 'Shopping'
-  | 'Drinks'
+  | 'Brewery'
+  | 'Winery'
+  | 'Cocktails'
   | 'Sights'
   | 'Family';
 
@@ -70,27 +72,28 @@ export const places: Place[] = [
   { id: 'p28', name: 'University Village (U Village)', blurb: "Easy, upscale open-air shopping minutes from the unit. Good anchor stores: Apple, Backcountry, Away Luggage, North Face, Lululemon, and Vuori. For food, Ba Bar (Vietnamese) and Mr. West (café/bar) are both solid picks right in the complex.", category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 3 },
 
   // Section 3 — Neighborhood Breweries
-  { id: 'p29', name: 'Human People Beer', blurb: "Solid neighborhood brewery with a welcoming taproom. They normally have great pizza, and some nights will have an amazing food pop-up — worth checking their Instagram before you go.", category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
-  { id: 'p30', name: 'Ravenna Brewing', blurb: "Easygoing local taproom with one of the best patios in the neighborhood for a beer outside. They usually have a food truck on-site, so you can make a proper meal of it.", category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
-  { id: 'p31', name: 'Burke-Gilman Brewing', blurb: "Right off the trail — the obvious stop after a bike ride. The El Camion food truck is around the corner, so you can get a burrito and a beer together. Good combo.", category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
+  { id: 'p29', name: 'Human People Beer', blurb: "Solid neighborhood brewery with a welcoming taproom. They normally have great pizza, and some nights will have an amazing food pop-up — worth checking their Instagram before you go.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
+  { id: 'p30', name: 'Ravenna Brewing', blurb: "Easygoing local taproom with one of the best patios in the neighborhood for a beer outside. They usually have a food truck on-site, so you can make a proper meal of it.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
+  { id: 'p31', name: 'Burke-Gilman Brewing', blurb: "Right off the trail — the obvious stop after a bike ride. The El Camion food truck is around the corner, so you can get a burrito and a beer together. Good combo.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
 
   // Section 3 — Ballard Brewing District
-  { id: 'p32', name: 'Stoup Brewing', blurb: 'My usual first stop in the district — dependable across the whole lineup, with a great beer-garden vibe.', category: 'Drinks', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
-  { id: 'p33', name: 'Urban Family Brewing', blurb: 'The adventurous one — there\'s always something interesting and a little wild on tap.', category: 'Drinks', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
-  { id: 'p34', name: "Reuben's Brews", blurb: 'The trophy case of the bunch — rarely, if ever, a miss.', category: 'Drinks', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p32', name: 'Stoup Brewing', blurb: 'My usual first stop in the district — dependable across the whole lineup, with a great beer-garden vibe.', category: 'Brewery', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p33', name: 'Urban Family Brewing', blurb: 'The adventurous one — there\'s always something interesting and a little wild on tap.', category: 'Brewery', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p34', name: "Reuben's Brews", blurb: 'The trophy case of the bunch — rarely, if ever, a miss.', category: 'Brewery', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
 
   // Section 3 — Standalone favorite brewery
-  { id: 'p57', name: 'Holy Mountain Brewing', blurb: 'One of my favorite breweries in the city, renowned for its oak- and barrel-aged and mixed-fermentation beers. This Greenwood taproom is the all-ages location (the original Interbay spot is 21+).', category: 'Drinks', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p57', name: 'Holy Mountain Brewing', blurb: 'One of my favorite breweries in the city, renowned for its oak- and barrel-aged and mixed-fermentation beers. This Greenwood taproom is the all-ages location (the original Interbay spot is 21+).', category: 'Brewery', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
 
   // Section 3 — Wine
-  { id: 'p35', name: 'Januik Winery', blurb: 'Polished, food-friendly Washington reds; a reliable, classy pour.', category: 'Drinks', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
-  { id: 'p36', name: 'Long Shadows Winery', blurb: 'Big, serious reds from a who\'s-who of winemakers — a real standout.', category: 'Drinks', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
-  { id: 'p37', name: 'Matthews Winery', blurb: 'Consistently excellent estate reds; it just doesn\'t miss.', category: 'Drinks', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p35', name: 'Januik Winery', blurb: 'Polished, food-friendly Washington reds; a reliable, classy pour.', category: 'Winery', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p36', name: 'Long Shadows Winery', blurb: 'Big, serious reds from a who\'s-who of winemakers — a real standout.', category: 'Winery', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p37', name: 'Matthews Winery', blurb: 'Consistently excellent estate reds; it just doesn\'t miss.', category: 'Winery', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p58', name: 'DeLille Cellars', blurb: "If you love white wine, this is the winery to visit. Their whites — particularly the Chaleur Blanc — are some of the best in Washington. The reds are excellent too, but don't sleep on the whites.", category: 'Winery', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
 
   // Section 3 — Cocktails
-  { id: 'p38', name: 'Needle & Thread / Tavern Law', blurb: 'Among the best cocktails in the city; Needle & Thread is the hidden upstairs bar (reservations), Tavern Law below it.', category: 'Drinks', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
-  { id: 'p39', name: 'Zig Zag Café', blurb: 'A pilgrimage worth making — unpretentious, impeccable.', category: 'Drinks', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
-  { id: 'p40', name: 'Canon', blurb: "Genuinely a top-5 whisk(e)y bar in the nation. For any whisk(e)y lover it's a must-visit; wildly inventive cocktails too.", category: 'Drinks', price: '$$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p38', name: 'Needle & Thread / Tavern Law', blurb: 'Among the best cocktails in the city; Needle & Thread is the hidden upstairs bar (reservations), Tavern Law below it.', category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p39', name: 'Zig Zag Café', blurb: 'A pilgrimage worth making — unpretentious, impeccable.', category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p40', name: 'Canon', blurb: "Genuinely a top-5 whisk(e)y bar in the nation. For any whisk(e)y lover it's a must-visit; wildly inventive cocktails too.", category: 'Cocktails', price: '$$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
 
   // Section 4 — Explore Seattle
   { id: 'p41', name: 'Pike Place Market', blurb: 'The original public market; go early to beat the crowds.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4, image: '/images/pike.jpg' },
