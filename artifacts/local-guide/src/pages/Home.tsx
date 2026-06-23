@@ -461,7 +461,7 @@ export default function Home() {
         </div>
 
         {/* Section 2: Right Outside Your Door */}
-        <section id="essentials" className="mb-20 scroll-mt-24">
+        <section id="essentials" className="mb-20 scroll-mt-40">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary">
               <Map className="w-5 h-5" />
@@ -477,7 +477,7 @@ export default function Home() {
         </section>
 
         {/* Section 3: Food & Drink */}
-        <section id="food" className="mb-20 scroll-mt-24">
+        <section id="food" className="mb-20 scroll-mt-40">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Food & Drink</h2>
           <p className="text-muted-foreground mb-8 text-lg max-w-2xl">Curated picks across the city — from transcendent Caribbean sandwiches to splurge omakase.</p>
 
@@ -520,7 +520,7 @@ export default function Home() {
         </section>
 
         {/* Section 4: Explore Seattle */}
-        <section id="explore" className="mb-20 scroll-mt-24">
+        <section id="explore" className="mb-20 scroll-mt-40">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Explore Seattle</h2>
           <p className="text-muted-foreground mb-8 text-lg">The first-timer hit list.</p>
           {placesBySection[4].length > 0 ? (
@@ -535,7 +535,7 @@ export default function Home() {
         </section>
 
         {/* Section 5: Rainy Day */}
-        <section id="rainy-day" className="mb-20 scroll-mt-24">
+        <section id="rainy-day" className="mb-20 scroll-mt-40">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Rainy-Day Plan</h2>
           <p className="text-muted-foreground mb-8 text-lg">When the weather turns, head inside.</p>
           {placesBySection[5].length > 0 ? (
@@ -550,7 +550,7 @@ export default function Home() {
         </section>
 
         {/* Section 6: Family & Kids */}
-        <section id="kids" className="mb-20 scroll-mt-24">
+        <section id="kids" className="mb-20 scroll-mt-40">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Family & Kids</h2>
           {placesBySection[6].length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
@@ -566,7 +566,7 @@ export default function Home() {
         {/* Section 7: Live Music & Events */}
         <section
           id="events"
-          className="mb-24 scroll-mt-24 bg-muted/30 -mx-4 md:-mx-8 px-4 md:px-8 py-16 border-y border-border"
+          className="mb-24 scroll-mt-40 bg-muted/30 -mx-4 md:-mx-8 px-4 md:px-8 py-16 border-y border-border"
         >
           <div className="max-w-6xl mx-auto">
             <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Live Music & Events</h2>
@@ -619,7 +619,7 @@ export default function Home() {
         </section>
 
         {/* Section 8: Neighborhoods */}
-        <section id="neighborhoods" className="mb-20 scroll-mt-24">
+        <section id="neighborhoods" className="mb-20 scroll-mt-40">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">Neighborhoods to Explore</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -639,7 +639,7 @@ export default function Home() {
         </section>
 
         {/* Sections 9 & 10: Practical & Getting Around */}
-        <div className="grid md:grid-cols-2 gap-12 md:gap-20 mb-20 scroll-mt-24" id="practical">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-20 mb-20 scroll-mt-40" id="practical">
           <section>
             <h2 className="font-serif text-3xl text-foreground mb-6">Practical / Good to Know</h2>
             <ul className="space-y-5">
@@ -717,7 +717,7 @@ export default function Home() {
         </div>
 
         {/* Sections 11 & 12: Skiing & Day Trips */}
-        <section id="beyond" className="mb-24 scroll-mt-24">
+        <section id="beyond" className="mb-24 scroll-mt-40">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center text-secondary">
               <Mountain className="w-5 h-5" />
@@ -726,7 +726,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-12">
-            <div id="skiing" className="scroll-mt-24">
+            <div id="skiing" className="scroll-mt-40">
               <h3 className="font-serif text-2xl mb-6 text-foreground/90">Skiing & Winter Sports</h3>
               <div className="grid sm:grid-cols-2 gap-4 mb-6">
                 {[
@@ -793,7 +793,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div id="day-trips" className="scroll-mt-24">
+            <div id="day-trips" className="scroll-mt-40">
               <h3 className="font-serif text-2xl mb-6 text-foreground/90">Day Trips</h3>
               <div className="grid gap-4">
                 {[
