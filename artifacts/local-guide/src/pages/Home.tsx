@@ -699,7 +699,7 @@ export default function Home() {
           <div className="grid gap-12">
             <div>
               <h3 className="font-serif text-2xl mb-6 text-foreground/90">Skiing & Winter Sports</h3>
-              <div className="space-y-4 mb-6">
+              <div className="grid sm:grid-cols-2 gap-4 mb-6">
                 {[
                   {
                     name: "The Summit at Snoqualmie",
