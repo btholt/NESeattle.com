@@ -550,14 +550,14 @@ export default function Home() {
               <div className="bg-primary/5 border border-primary/20 rounded-xl p-5 mb-8 flex gap-4 items-start">
                 <Info className="w-6 h-6 text-primary shrink-0 mt-0.5" />
                 <p className="text-sm text-foreground leading-relaxed">
-                  <strong className="font-semibold block mb-1">Heads-up on bag policy at Lumen Field, Climate Pledge Arena & T-Mobile Park:</strong>
-                  All three venues enforce a strict clear-bag-only policy (diaper bags are the main exception). The real move is to bring no bag at all — the bag-check line runs roughly 10× longer than the no-bag entry.
+                  <strong className="font-semibold block mb-1">Heads-up on bag policy at Lumen Field, Climate Pledge Arena, T-Mobile Park, Husky Stadium & Alaska Airlines Arena:</strong>
+                  All five venues enforce a strict clear-bag-only policy (diaper bags are the main exception). The real move is to bring no bag at all — the bag-check line runs roughly 10× longer than the no-bag entry.
                 </p>
               </div>
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
-                  { name: "UW Huskies", detail: "Husky Stadium — right next door" },
+                  { name: "UW Huskies", detail: "Football: Husky Stadium · Basketball: Alaska Airlines Arena — both right next door" },
                   { name: "Seattle Mariners", detail: "T-Mobile Park" },
                   { name: "Seattle Kraken", detail: "Climate Pledge Arena" },
                   { name: "Seattle Seahawks", detail: "Lumen Field" },
