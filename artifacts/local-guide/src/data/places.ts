@@ -63,7 +63,7 @@ export const places: Place[] = [
   { id: 'p25', name: 'The Herbfarm', blurb: 'A multi-course Pacific-Northwest tasting menu out in Woodinville; block out the whole evening.', category: 'Restaurants', price: '$$$$', distanceTier: 'Day trip', kidFriendly: false, section: 3 },
 
   // Section 3 — Coffee
-  { id: 'p26', name: 'Herkimer Coffee', blurb: 'Excellent roaster and café; worth the trip across town.', category: 'Coffee', price: '$', distanceTier: 'Across town', kidFriendly: true, section: 3 },
+  { id: 'p26', name: 'Herkimer Coffee', blurb: "My pick for the best roasters in the city. Worth the trip for the coffee alone — and the Phinney Ridge neighborhood around it is genuinely cute, so factor in a little wander while you're there.", category: 'Coffee', price: '$', distanceTier: 'Across town', kidFriendly: true, section: 3 },
   { id: 'p27', name: 'Milstead & Co.', blurb: 'Meticulous multi-roaster pour-overs in a beautiful room.', category: 'Coffee', price: '$', distanceTier: 'Across town', kidFriendly: true, section: 3 },
 
   // Section 3 — Shopping
@@ -72,7 +72,7 @@ export const places: Place[] = [
   // Section 3 — Neighborhood Breweries
   { id: 'p29', name: 'Human People Beer', blurb: 'Solid neighborhood brewery with a welcoming taproom.', category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
   { id: 'p30', name: 'Ravenna Brewing', blurb: 'Easygoing local taproom; great for a low-key afternoon pint.', category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
-  { id: 'p31', name: 'Burke-Gilman Brewing', blurb: 'Right off the trail — the obvious stop after a bike ride.', category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
+  { id: 'p31', name: 'Burke-Gilman Brewing', blurb: "Right off the trail — the obvious stop after a bike ride. The El Camion food truck is around the corner, so you can get a burrito and a beer together. Good combo.", category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
 
   // Section 3 — Ballard Brewing District
   { id: 'p32', name: 'Stoup Brewing', blurb: 'My usual first stop in the district — dependable across the whole lineup, with a great beer-garden vibe.', category: 'Drinks', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },

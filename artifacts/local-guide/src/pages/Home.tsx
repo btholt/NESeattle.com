@@ -590,6 +590,7 @@ export default function Home() {
               { name: "Wallingford", desc: "Laid-back, good eats, with Gas Works Park nearby." },
               { name: "Capitol Hill", desc: "The city's nightlife, dining, and live-music core." },
               { name: "U District", desc: "Student energy, cheap eats, and 'the Ave'." },
+              { name: "Greenwood", desc: "Low-key, deeply local neighborhood with great bars, coffee, and some of the best casual dining in the city." },
             ].map((hood) => (
               <div key={hood.name} className="bg-secondary/5 border border-secondary/20 p-6 rounded-xl">
                 <h3 className="font-serif text-xl font-medium text-secondary mb-2">{hood.name}</h3>
