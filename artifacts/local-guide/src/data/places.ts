@@ -91,7 +91,7 @@ export const places: Place[] = [
   { id: 'p58', name: 'DeLille Cellars', blurb: "If you love white wine, this is the winery to visit. Their whites — particularly the Chaleur Blanc — are some of the best in Washington. The reds are excellent too, but don't sleep on the whites.", category: 'Winery', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
 
   // Section 3 — Cocktails
-  { id: 'p38', name: 'Needle & Thread / Tavern Law', blurb: 'Among the best cocktails in the city; Needle & Thread is the hidden upstairs bar (reservations), Tavern Law below it.', category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p38', name: 'Needle & Thread / Tavern Law', blurb: "Among the best cocktails in the city. Needle & Thread is an upstairs speakeasy (reservations required) — no menu, they just make you something custom. Tavern Law is the excellent bar downstairs if you can't get a reservation.", category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
   { id: 'p39', name: 'Zig Zag Café', blurb: 'A pilgrimage worth making — unpretentious, impeccable.', category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
   { id: 'p40', name: 'Canon', blurb: "Genuinely a top-5 whisk(e)y bar in the nation. For any whisk(e)y lover it's a must-visit; wildly inventive cocktails too.", category: 'Cocktails', price: '$$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
 
