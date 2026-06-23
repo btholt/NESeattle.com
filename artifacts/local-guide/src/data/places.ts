@@ -92,6 +92,7 @@ export const places: Place[] = [
 
   // Section 3 — Cocktails
   { id: 'p38', name: 'Needle & Thread / Tavern Law', blurb: "Among the best cocktails in the city. Needle & Thread is an upstairs speakeasy (reservations required) — no menu, they just make you something custom. Tavern Law is the excellent bar downstairs if you can't get a reservation.", category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
+  { id: 'p59', name: 'Inside Passage / Rumba', blurb: "Rumba is a great tiki bar — excellent tiki cocktails and solid food in a lovely room. Inside Passage is the speakeasy hidden inside (reservations required); an intimate, serious cocktail experience tucked behind the tiki bar.", category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
   { id: 'p39', name: 'Zig Zag Café', blurb: 'A pilgrimage worth making — unpretentious, impeccable.', category: 'Cocktails', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
   { id: 'p40', name: 'Canon', blurb: "Genuinely a top-5 whisk(e)y bar in the nation. For any whisk(e)y lover it's a must-visit; wildly inventive cocktails too.", category: 'Cocktails', price: '$$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
 
