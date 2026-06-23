@@ -23,7 +23,7 @@ import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
 
 // IDs of the three Ballard district breweries that get the featured callout
-const BALLARD_BREWERY_IDS = ["p32", "p33", "p34"];
+const BALLARD_BREWERY_IDS = ["p32", "p33", "p34", "p60", "p61", "p62"];
 
 function encodePlaceQuery(name: string) {
   return encodeURIComponent(`${name} Seattle`);
