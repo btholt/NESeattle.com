@@ -768,32 +768,52 @@ export default function Home() {
               <h3 className="font-serif text-2xl mb-6 text-foreground/90">Day Trips</h3>
               <div className="grid gap-4">
                 {[
-                  { name: "Mount Rainier National Park", desc: "The mountain up close." },
-                  { name: "Snoqualmie Falls + Salish Lodge", desc: "A dramatic waterfall, ~40 min out." },
-                  { name: "Leavenworth", desc: "The Bavarian-themed mountain town." },
-                  { name: "Woodinville Wine Country", desc: "One of the best places in the USA to taste wine." },
+                  {
+                    name: "Mount Rainier National Park",
+                    drive: "~2–2.5 hrs southeast",
+                    image: "/images/rainier.jpg",
+                    desc: "The mountain up close — and it's staggering. The Paradise area is my favorite hike, with wildflower meadows and glacier views that don't feel real. Fair warning: Paradise is popular and can get crowded with backed-up traffic on summer weekends. Reservations required during peak season. Still completely worth it.",
+                  },
+                  {
+                    name: "Snoqualmie Falls + Salish Lodge",
+                    drive: "~40 min east on I-90",
+                    image: "/images/salish-lodge.jpg",
+                    desc: "A 268-foot waterfall with a gorgeous old lodge perched right above it — the Salish Lodge is genuinely beautiful and worth stopping to admire even if you're not staying. If you've ever seen Twin Peaks, you've already seen it.",
+                  },
+                  {
+                    name: "Leavenworth",
+                    drive: "~2.5 hrs east on US-2",
+                    image: "/images/leavenworth.jpg",
+                    desc: "A small Bavarian-themed town tucked into the Cascades that sounds kitschy but is genuinely charming. My move: grab a pretzel from one of the bakeries, walk the main street, and finish with a pint at Icicle Brewing at the end of the block.",
+                  },
+                  {
+                    name: "Woodinville Wine Country",
+                    drive: "~30–40 min northeast",
+                    image: "/images/woodinville.jpg",
+                    desc: "One of the best wine-tasting destinations in the country — over 100 tasting rooms packed into a small area. I've already called out my favorite wineries elsewhere in this guide. If you're making a full day of it, booking a wine tour bus is genuinely fun and takes the driving off your hands.",
+                  },
                 ].map((trip) => (
-                  <div
-                    key={trip.name}
-                    className="bg-card border border-border p-5 rounded-xl shadow-sm flex items-center justify-between group"
-                  >
-                    <div>
-                      <h4 className="font-serif font-medium text-lg mb-1">{trip.name}</h4>
-                      <p className="text-sm text-muted-foreground">{trip.desc}</p>
+                  <div key={trip.name} className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
+                    <img src={trip.image} alt={trip.name} className="w-full h-44 object-cover" />
+                    <div className="p-4">
+                      <h4 className="font-serif font-medium text-lg mb-0.5">{trip.name}</h4>
+                      <p className="text-xs text-primary/70 font-medium mb-2">{trip.drive}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{trip.desc}</p>
                     </div>
-                    <TreePine className="w-6 h-6 text-secondary/40 group-hover:text-secondary transition-colors" />
                   </div>
                 ))}
 
-                <div className="bg-card border border-border p-5 rounded-xl shadow-sm">
-                  <h4 className="font-serif font-medium text-lg mb-2">San Juan Islands</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
-                    Whales, slow island time, some of the prettiest scenery in the state. Drive to Anacortes (~1.5 hrs north) for
-                    the Washington State Ferry. If bringing a car, make a reservation — sailings sell out.
-                  </p>
-                  <div className="bg-primary/5 text-primary text-xs p-3 rounded border border-primary/10">
-                    <strong>Insider trick:</strong> Walk on without a reservation and get around by bike/shuttle/rental. Favorites:
-                    Orcas Island (Eastsound) and San Juan Island (Friday Harbor).
+                <div className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
+                  <img src="/images/eastsound.jpg" alt="Eastsound, Orcas Island" className="w-full h-44 object-cover" />
+                  <div className="p-4">
+                    <h4 className="font-serif font-medium text-lg mb-0.5">San Juan Islands</h4>
+                    <p className="text-xs text-primary/70 font-medium mb-2">~1.5 hrs to Anacortes ferry terminal</p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                      Whales, slow island time, and some of the prettiest scenery in the state. Strong recommendation to make the trip. Drive to Anacortes and catch the Washington State Ferry — if you're bringing a car, make a reservation well in advance as sailings sell out. My absolute favorites: <strong>Eastsound</strong> on Orcas Island and <strong>Friday Harbor</strong> on San Juan Island. You must eat oysters when you're out there. And don't miss <strong>Island Hoppin' Brewery</strong> on Orcas for a well-earned pint.
+                    </p>
+                    <div className="bg-primary/5 text-primary text-xs p-3 rounded border border-primary/10">
+                      <strong>Insider trick:</strong> Walk on as a foot passenger without a reservation and get around by bike, shuttle, or rental car on the island — no ferry wait anxiety required.
+                    </div>
                   </div>
                 </div>
               </div>
