@@ -67,7 +67,7 @@ export const places: Place[] = [
   { id: 'p27', name: 'Milstead & Co.', blurb: 'Meticulous multi-roaster pour-overs in a beautiful room.', category: 'Coffee', price: '$', distanceTier: 'Across town', kidFriendly: true, section: 3 },
 
   // Section 3 — Shopping
-  { id: 'p28', name: 'University Village (U Village)', blurb: 'Easy, upscale open-air shopping minutes from the unit.', category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 3 },
+  { id: 'p28', name: 'University Village (U Village)', blurb: "Easy, upscale open-air shopping minutes from the unit. Good anchor stores: Apple, Backcountry, Away Luggage, North Face, Lululemon, and Vuori. For food, Ba Bar (Vietnamese) and Mr. West (café/bar) are both solid picks right in the complex.", category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 3 },
 
   // Section 3 — Neighborhood Breweries
   { id: 'p29', name: 'Human People Beer', blurb: "Solid neighborhood brewery with a welcoming taproom. They normally have great pizza, and some nights will have an amazing food pop-up — worth checking their Instagram before you go.", category: 'Drinks', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3 },
@@ -104,7 +104,7 @@ export const places: Place[] = [
   { id: 'p47', name: 'Burke Museum & Henry Art Gallery (UW)', blurb: 'Two great museums on one campus.', category: 'Sights', distanceTier: 'Short drive', kidFriendly: true, section: 5, image: '/images/burke-museum.jpg' },
   { id: 'p48', name: 'Museum of Flight', blurb: 'World-class, hands-on — genuinely one of the best of its kind.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 5 },
   { id: 'p49', name: 'Pacific Science Center', blurb: 'Great with kids; easy afternoon at Seattle Center.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 5 },
-  { id: 'p50', name: 'U Village', blurb: 'Covered shopping on a rainy afternoon, minutes from the unit.', category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 5 },
+  { id: 'p50', name: 'U Village', blurb: "Covered shopping on a rainy afternoon, minutes from the unit. Apple, Backcountry, North Face, Lululemon, Vuori, and Away are all here. Grab food at Ba Bar or Mr. West while you're at it.", category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 5 },
 
   // Section 6 — Family & Kids
   { id: 'p51', name: 'View Ridge Playground & Splash Pad', blurb: 'Splash pad in summer, great year-round playground.', category: 'Family', distanceTier: 'Neighborhood', kidFriendly: true, section: 6, image: '/images/viewridgeplayground.jpg' },
