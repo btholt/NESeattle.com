@@ -1,0 +1,76 @@
+# Round 2 — Refinement Prompt for neseattle.com
+
+Paste into Replit Agent. These are refinements to the existing local-guide app — keep all current content and structure; just make the changes below. **Keep all place data in the existing structured data file (JSON/TS array). Do not add a database.**
+
+---
+
+## 1. Image support (most important — it takes the guide to the next level)
+
+Add images throughout. I'll be supplying the image files myself, so set up the slots and rendering now with graceful fallbacks so the layout looks right whether or not an image is present yet.
+
+- Add an optional **`image`** field to each place object in the data file. Convention: `/images/<slug>.jpg` (e.g. `/images/canlis.jpg`), with files served from the public/static folder so I can just drop them in.
+- **Place cards:** render the image at the top of each card at a **fixed aspect ratio (4:3)**, `object-fit: cover`, rounded top corners to match the card. Use **lazy loading** (`loading="lazy"`) and set explicit width/height (or an aspect-ratio box) to prevent layout shift.
+- **Fallback when `image` is missing:** show a tidy placeholder — a soft PNW-toned gradient block with the place's category icon or first initial centered — never a broken-image icon and never a collapsed card.
+- **Hero:** support a **full-width banner image** (`/images/hero.jpg`) behind the welcome text, with a subtle dark gradient overlay so the headline stays legible. Fall back to a solid evergreen/stone gradient if absent.
+- Keep performance tight: lazy-load everything below the fold, and don't block first paint on images.
+
+## 2. Fix the live-events feed (Ticketmaster key is set but not being used)
+
+The events module should be pulling upcoming Seattle music events from **Ticketmaster Discovery API**, but it isn't. Please:
+
+- **Switch the events source** to Ticketmaster (the config flag/env is likely still defaulting to SeatGeek, so it silently falls back to the static-links card). Make Ticketmaster the active source.
+- **Read the key from the deployment secret.** First, log which env var actually holds the key and confirm it's present **in the deployed environment** (Replit workspace secrets and deployment secrets are separate — if it only exists in the workspace, add it to the deployment). Match the code to the exact secret name (e.g. `TICKETMASTER_API_KEY`).
+- **Backend proxy route** (never call the API or expose the key from the browser). Call:
+  - `GET https://app.ticketmaster.com/discovery/v2/events.json`
+  - params: `apikey=<key>`, `classificationName=Music`, `city=Seattle`, `sort=date,asc`, `startDateTime=<now in ISO-8601 UTC, e.g. 2026-06-22T00:00:00Z>`, `size=15`
+  - (If `city=Seattle` returns too little, fall back to `latlong=47.6062,-122.3321&radius=30&unit=miles`. Verify param names against the current Ticketmaster Discovery v2 docs.)
+- **Parse** `_embedded.events[]` → for each: `name`, venue = `_embedded.venues[0].name`, date = `dates.start.localDate` (+ `localTime` if present), ticket link = `url`, and optionally the first `images[]` entry to show a thumbnail.
+- **Graceful failure:** if the key is missing or the call errors/returns empty, fall back to the existing "Check what's on" outbound-links card rather than breaking the section. Add a small server-side log line on success/failure so I can confirm the key is loading.
+
+## 3. Title, meta, and social-share wiring
+
+The page title and meta tags are still Replit placeholders. Update them:
+
+- **Title:** `NE Seattle Local Guide` (change this string if I tell you otherwise).
+- **Meta description:** a real one, e.g. *"A local's guide to Northeast Seattle — the best coffee, food, parks, breweries, and things to do near your stay."*
+- **Open Graph / Twitter tags:** set `og:title`, `og:description`, `og:type=website`, `og:url=https://neseattle.com`, and `og:image` pointing to **`/og-image.png`** (I'll supply a 1200×630 image). Keep `twitter:card=summary_large_image` and mirror the title/description/image into the `twitter:*` tags.
+- **Favicon + app icon:** wire up `/favicon.png` and an `apple-touch-icon` at `/apple-touch-icon.png` (180×180). I'll supply these.
+- Leave the image paths pointing at those filenames even though the files aren't there yet — I'll add them next.
+
+## 4. Better notes (replace the repetitive "a personal favorite")
+
+Swap the generic repeated notes for these. (These read as my voice; keep them concise.)
+
+- **Stoup Brewing** → "My usual first stop in the district — dependable across the whole lineup, with a great beer-garden vibe."
+- **Urban Family Brewing** → "The adventurous one — there's always something interesting and a little wild on tap."
+- **Reuben's Brews** → "The trophy case of the bunch — rarely, if ever, a miss."
+- **Januik** → "Polished, food-friendly Washington reds; a reliable, classy pour."
+- **Long Shadows** → "Big, serious reds from a who's-who of winemakers — a real standout."
+- **Matthews** → "Consistently excellent estate reds; it just doesn't miss."
+
+(Anywhere else the note is still "a personal favorite," replace it with a short, specific one-liner in the same spirit rather than repeating the phrase.)
+
+## 5. Two content changes
+
+- **Remove "Paseo"** from the casual-eats list — the entry should read just **Un Bien** (keep the same blurb: "unexpectedly transcendent Caribbean sandwiches; the Caribbean Roast is the move").
+- **Reframe the Ballard Brewing District as a featured attraction**, not just three bullets. Lead with a short callout making the point that the district is a destination in its own right — **over a dozen breweries in a few walkable blocks, with a legendary pub crawl between them** — and present Stoup, Urban Family, and Reuben's as the three to start with before wandering. Use the brewery blurbs from section 4 above. Suggested intro line: *"An attraction unto itself: over a dozen breweries packed into a few walkable blocks, and the pub crawl between them is legendary. Start with these three, then wander — you can't go wrong over there."* Style it so it visually reads as a highlighted section, not an ordinary list.
+
+## 6. Collapse the filters on mobile (they currently fill the whole screen)
+
+On mobile, the filter panel (Category / Distance / Price / Kid-friendly) takes up the entire viewport and pushes all the place cards below the fold. Fix it:
+
+- On small screens, **hide the filters by default behind a single "Filters" button** (a slide-in sheet or a collapsible accordion). Tapping it opens the panel; applying or tapping away closes it. A small badge showing the count of active filters is a nice touch.
+- The **place cards should be the first thing a guest sees** on mobile — the filter control should be a compact bar, not a full-height panel.
+- On desktop / wider screens, keep the filters visible as they are now.
+
+## 7. Add a brewery — Holy Mountain
+
+Add **Holy Mountain Brewing** to the Drinks/breweries list (it's a standalone favorite, not part of the Ballard district):
+
+- **Name:** Holy Mountain Brewing (Greenwood Ave, Phinney Ridge)
+- **Note:** "One of my favorite breweries in the city, renowned for its oak- and barrel-aged and mixed-fermentation beers. This Greenwood taproom is the all-ages location (the original Interbay spot is 21+)."
+- **Tags:** Drinks · $$ · Across town
+
+---
+
+*Everything else stays as-is. Don't refactor unrelated code, don't add a database, and keep the content in the existing data file.*

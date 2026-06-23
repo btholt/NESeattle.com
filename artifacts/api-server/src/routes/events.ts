@@ -3,7 +3,8 @@ import { Router } from "express";
 const router = Router();
 
 // Config flag: "seatgeek" | "ticketmaster" | "fallback"
-const EVENTS_SOURCE = process.env.EVENTS_SOURCE ?? "seatgeek";
+// Default is ticketmaster — set EVENTS_SOURCE env var to override
+const EVENTS_SOURCE = process.env.EVENTS_SOURCE ?? "ticketmaster";
 
 interface Event {
   id: string;
@@ -81,38 +82,64 @@ async function fetchTicketmaster(): Promise<Event[]> {
       .toISOString()
       .split(".")[0] + "Z";
 
-  const params = new URLSearchParams({
+  type TMEvent = {
+    id: string;
+    name: string;
+    url: string;
+    dates: { start: { localDate: string; localTime?: string } };
+    _embedded: { venues: Array<{ name: string }> };
+  };
+
+  type TMResponse = { _embedded?: { events: TMEvent[] } };
+
+  // Try city=Seattle first
+  const cityParams = new URLSearchParams({
     apikey: apiKey,
-    dmaId: "383",
+    classificationName: "Music",
+    city: "Seattle",
+    stateCode: "WA",
     startDateTime: now,
     endDateTime: future,
     sort: "date,asc",
-    size: "20",
+    size: "15",
   });
 
-  const res = await fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?${params}`
+  let res = await fetch(
+    `https://app.ticketmaster.com/discovery/v2/events.json?${cityParams}`
   );
   if (!res.ok) throw new Error(`Ticketmaster responded ${res.status}`);
 
-  const json = (await res.json()) as {
-    _embedded?: {
-      events: Array<{
-        id: string;
-        name: string;
-        url: string;
-        dates: { start: { dateTime: string } };
-        _embedded: { venues: Array<{ name: string }> };
-      }>;
-    };
-  };
+  let json = (await res.json()) as TMResponse;
+  let events = json._embedded?.events ?? [];
 
-  const events = json._embedded?.events ?? [];
+  // Fallback to latlong if city query returns nothing
+  if (events.length === 0) {
+    const geoParams = new URLSearchParams({
+      apikey: apiKey,
+      classificationName: "Music",
+      latlong: "47.6062,-122.3321",
+      radius: "30",
+      unit: "miles",
+      startDateTime: now,
+      endDateTime: future,
+      sort: "date,asc",
+      size: "15",
+    });
+
+    res = await fetch(
+      `https://app.ticketmaster.com/discovery/v2/events.json?${geoParams}`
+    );
+    if (!res.ok) throw new Error(`Ticketmaster latlong responded ${res.status}`);
+    json = (await res.json()) as TMResponse;
+    events = json._embedded?.events ?? [];
+  }
+
   return events.map((e) => ({
     id: e.id,
     title: e.name,
     venue: e._embedded?.venues?.[0]?.name ?? "Seattle",
-    date: e.dates.start.dateTime,
+    date: e.dates.start.localDate +
+      (e.dates.start.localTime ? `T${e.dates.start.localTime}` : ""),
     ticketsUrl: e.url,
   }));
 }
@@ -120,32 +147,54 @@ async function fetchTicketmaster(): Promise<Event[]> {
 router.get("/events", async (req, res) => {
   const source = EVENTS_SOURCE;
 
+  const tmKeyPresent = !!process.env.TICKETMASTER_API_KEY;
+  const sgKeyPresent = !!process.env.SEATGEEK_CLIENT_ID;
+  req.log.info(
+    { source, tmKeyPresent, sgKeyPresent },
+    "Events endpoint called"
+  );
+
   try {
     if (source === "seatgeek") {
       const events = await fetchSeatGeek();
+      req.log.info({ eventsCount: events.length }, "SeatGeek events fetched");
       res.json({ source: "seatgeek", events, fallbackLinks: null });
       return;
     }
 
     if (source === "ticketmaster") {
       const events = await fetchTicketmaster();
+      req.log.info({ eventsCount: events.length }, "Ticketmaster events fetched");
       res.json({ source: "ticketmaster", events, fallbackLinks: null });
       return;
     }
   } catch (err) {
-    req.log.warn({ err }, "Primary events source failed, trying secondary");
+    req.log.warn({ err, source }, "Primary events source failed, trying secondary");
 
     if (source === "seatgeek") {
       try {
         const events = await fetchTicketmaster();
+        req.log.info({ eventsCount: events.length }, "Ticketmaster fallback events fetched");
         res.json({ source: "ticketmaster", events, fallbackLinks: null });
         return;
       } catch (err2) {
-        req.log.warn({ err: err2 }, "Secondary events source failed, using fallback");
+        req.log.warn({ err: err2 }, "Secondary events source also failed, using static fallback");
+      }
+    }
+
+    if (source === "ticketmaster") {
+      try {
+        const events = await fetchSeatGeek();
+        req.log.info({ eventsCount: events.length }, "SeatGeek fallback events fetched");
+        res.json({ source: "seatgeek", events, fallbackLinks: null });
+        return;
+      } catch (err2) {
+        req.log.warn({ err: err2 }, "SeatGeek fallback also failed, using static fallback");
       }
     }
   }
 
+  req.log.info("Returning static fallback links");
   res.json({ source: "fallback", events: [], fallbackLinks: FALLBACK_LINKS });
 });
 
