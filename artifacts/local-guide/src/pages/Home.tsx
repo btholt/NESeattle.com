@@ -732,7 +732,7 @@ export default function Home() {
                 ].map((mountain) => (
                   <div key={mountain.name} className="bg-card border border-border rounded-xl shadow-sm overflow-hidden">
                     <a href={mountain.map} target="_blank" rel="noopener noreferrer" className="block">
-                      <img src={mountain.map} alt={`${mountain.name} trail map`} className="w-full h-36 object-cover object-top hover:opacity-90 transition-opacity" />
+                      <img src={mountain.map} alt={`${mountain.name} trail map`} className="w-full h-64 object-cover object-top hover:opacity-90 transition-opacity" />
                     </a>
                     <div className="p-4">
                       <div className="flex items-center justify-between gap-2 mb-1">
