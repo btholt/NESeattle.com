@@ -488,36 +488,35 @@ export default function Home() {
           )}
         </section>
 
-        {/* Section 4 & 5: Explore & Rainy Day */}
-        <div className="grid lg:grid-cols-2 gap-16 mb-20 scroll-mt-24" id="explore">
-          <section>
-            <h2 className="font-serif text-3xl text-foreground mb-4">Explore Seattle</h2>
-            <p className="text-muted-foreground mb-8">The first-timer hit list.</p>
-            {placesBySection[4].length > 0 ? (
-              <div className="space-y-4">
-                {placesBySection[4].map((p) => <PlaceCard key={p.id} place={p} />)}
-              </div>
-            ) : (
-              <div className="bg-muted/50 rounded-xl p-6 text-center text-muted-foreground text-sm border border-dashed border-border">
-                Adjust filters to see recommendations.
-              </div>
-            )}
-          </section>
+        {/* Section 4: Explore Seattle */}
+        <section id="explore" className="mb-20 scroll-mt-24">
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Explore Seattle</h2>
+          <p className="text-muted-foreground mb-8 text-lg">The first-timer hit list.</p>
+          {placesBySection[4].length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {placesBySection[4].map((p) => <PlaceCard key={p.id} place={p} />)}
+            </div>
+          ) : (
+            <div className="bg-muted/50 rounded-xl p-6 text-center text-muted-foreground text-sm border border-dashed border-border">
+              Adjust filters to see recommendations.
+            </div>
+          )}
+        </section>
 
-          <section>
-            <h2 className="font-serif text-3xl text-foreground mb-4">Rainy-Day Plan</h2>
-            <p className="text-muted-foreground mb-8">When the weather turns, head inside.</p>
-            {placesBySection[5].length > 0 ? (
-              <div className="space-y-4">
-                {placesBySection[5].map((p) => <PlaceCard key={p.id} place={p} />)}
-              </div>
-            ) : (
-              <div className="bg-muted/50 rounded-xl p-6 text-center text-muted-foreground text-sm border border-dashed border-border">
-                Adjust filters to see recommendations.
-              </div>
-            )}
-          </section>
-        </div>
+        {/* Section 5: Rainy Day */}
+        <section className="mb-20">
+          <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Rainy-Day Plan</h2>
+          <p className="text-muted-foreground mb-8 text-lg">When the weather turns, head inside.</p>
+          {placesBySection[5].length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {placesBySection[5].map((p) => <PlaceCard key={p.id} place={p} />)}
+            </div>
+          ) : (
+            <div className="bg-muted/50 rounded-xl p-6 text-center text-muted-foreground text-sm border border-dashed border-border">
+              Adjust filters to see recommendations.
+            </div>
+          )}
+        </section>
 
         {/* Section 6: Family & Kids */}
         <section className="mb-20">
@@ -561,11 +560,15 @@ export default function Home() {
                   { name: "UW Huskies", detail: "Husky Stadium — right next door" },
                   { name: "Seattle Mariners", detail: "T-Mobile Park" },
                   { name: "Seattle Kraken", detail: "Climate Pledge Arena" },
-                  { name: "Seahawks / Sounders", detail: "Lumen Field" },
-                  { name: "Chateau Ste. Michelle", detail: "Outdoor concerts in Woodinville" },
+                  { name: "Seattle Seahawks", detail: "Lumen Field" },
+                  { name: "Seattle Sounders FC", detail: "Lumen Field — top-tier MLS club" },
                   { name: "Seattle Storm (WNBA)", detail: "Climate Pledge Arena — beloved franchise" },
                   { name: "Seattle Reign FC", detail: "Lumen Field — world-class women's soccer" },
                   { name: "Seattle Torrent (PWHL)", detail: "Climate Pledge Arena — brand-new expansion" },
+                  { name: "Chateau Ste. Michelle", detail: "Outdoor concerts in Woodinville" },
+                  { name: "Showbox", detail: "Iconic mid-size live music venue" },
+                  { name: "Paramount Theatre", detail: "Historic downtown theater; touring acts and Broadway" },
+                  { name: "The 5th Avenue Theatre", detail: "Gorgeous 1926 Chinese-inspired theater; world-class musicals" },
                 ].map((venue, i) => (
                   <div key={i} className="bg-card p-4 rounded-lg border border-border shadow-sm">
                     <h4 className="font-serif font-medium mb-1 text-foreground">{venue.name}</h4>
