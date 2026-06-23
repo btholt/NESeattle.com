@@ -372,6 +372,34 @@ export default function Home() {
 
       <main className="max-w-6xl mx-auto px-4 md:px-8 pb-24">
 
+        {/* Table of Contents */}
+        <nav className="mb-12 mt-2 bg-card border border-border rounded-2xl p-6 shadow-sm">
+          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-4">Jump to</p>
+          <ul className="flex flex-wrap gap-2">
+            {[
+              { label: "Right Outside Your Door", href: "#essentials", icon: "🌿" },
+              { label: "Food & Drink", href: "#food", icon: "🍽️" },
+              { label: "Explore Seattle", href: "#explore", icon: "🌆" },
+              { label: "Rainy-Day Plan", href: "#rainy-day", icon: "🌧️" },
+              { label: "Family & Kids", href: "#kids", icon: "👨‍👩‍👧" },
+              { label: "Live Music & Events", href: "#events", icon: "🎵" },
+              { label: "Neighborhoods", href: "#neighborhoods", icon: "🏘️" },
+              { label: "Practical Info", href: "#practical", icon: "ℹ️" },
+              { label: "Beyond the City", href: "#beyond", icon: "🏔️" },
+            ].map(({ label, href, icon }) => (
+              <li key={href}>
+                <a
+                  href={href}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium bg-muted hover:bg-primary/10 hover:text-primary text-foreground/80 transition-colors border border-transparent hover:border-primary/20"
+                >
+                  <span>{icon}</span>
+                  <span>{label}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
         {/* Filter bar */}
         <div className="mb-16 sticky top-16 z-40">
           {/* Mobile: compact toggle bar */}
@@ -506,7 +534,7 @@ export default function Home() {
         </section>
 
         {/* Section 5: Rainy Day */}
-        <section className="mb-20">
+        <section id="rainy-day" className="mb-20 scroll-mt-24">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Rainy-Day Plan</h2>
           <p className="text-muted-foreground mb-8 text-lg">When the weather turns, head inside.</p>
           {placesBySection[5].length > 0 ? (
@@ -521,7 +549,7 @@ export default function Home() {
         </section>
 
         {/* Section 6: Family & Kids */}
-        <section className="mb-20">
+        <section id="kids" className="mb-20 scroll-mt-24">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">Family & Kids</h2>
           {placesBySection[6].length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
@@ -590,7 +618,7 @@ export default function Home() {
         </section>
 
         {/* Section 8: Neighborhoods */}
-        <section className="mb-20">
+        <section id="neighborhoods" className="mb-20 scroll-mt-24">
           <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">Neighborhoods to Explore</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -688,7 +716,7 @@ export default function Home() {
         </div>
 
         {/* Sections 11 & 12: Skiing & Day Trips */}
-        <section className="mb-24">
+        <section id="beyond" className="mb-24 scroll-mt-24">
           <div className="flex items-center gap-3 mb-8">
             <div className="w-10 h-10 bg-secondary/10 rounded-full flex items-center justify-center text-secondary">
               <Mountain className="w-5 h-5" />
