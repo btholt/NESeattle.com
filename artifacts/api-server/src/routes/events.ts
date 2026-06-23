@@ -26,8 +26,8 @@ const FALLBACK_LINKS: FallbackLink[] = [
     url: "https://www.bandsintown.com/c/seattle-wa",
   },
   {
-    label: "The Stranger Events",
-    url: "https://www.thestranger.com/events/music",
+    label: "EverOut Top Events",
+    url: "https://everout.com/seattle/top-events/",
   },
 ];
 
