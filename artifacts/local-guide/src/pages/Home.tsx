@@ -385,7 +385,8 @@ export default function Home() {
               { label: "Live Music & Events", href: "#events", icon: "🎵" },
               { label: "Neighborhoods", href: "#neighborhoods", icon: "🏘️" },
               { label: "Practical Info", href: "#practical", icon: "ℹ️" },
-              { label: "Beyond the City", href: "#beyond", icon: "🏔️" },
+              { label: "Skiing", href: "#skiing", icon: "⛷️" },
+              { label: "Day Trips", href: "#day-trips", icon: "🚗" },
             ].map(({ label, href, icon }) => (
               <li key={href}>
                 <a
@@ -725,7 +726,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-12">
-            <div>
+            <div id="skiing" className="scroll-mt-24">
               <h3 className="font-serif text-2xl mb-6 text-foreground/90">Skiing & Winter Sports</h3>
               <div className="grid sm:grid-cols-2 gap-4 mb-6">
                 {[
@@ -792,7 +793,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div>
+            <div id="day-trips" className="scroll-mt-24">
               <h3 className="font-serif text-2xl mb-6 text-foreground/90">Day Trips</h3>
               <div className="grid gap-4">
                 {[
