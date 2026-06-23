@@ -43,7 +43,7 @@ export const places: Place[] = [
   { id: 'p11', name: 'View Ridge Playground', blurb: 'Family playground with a splash pad in summer.', category: 'Parks & Outdoors', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
   { id: 'p12', name: 'Bryant Playground', blurb: 'Quieter neighborhood playground for families.', category: 'Parks & Outdoors', distanceTier: 'Neighborhood', kidFriendly: true, section: 2 },
   { id: 'p13', name: 'Green Lake', blurb: "The city's favorite loop for walking, running, and paddling; magical on a sunny day — be ready, every Seattle local has the same idea, so it gets busy.", category: 'Parks & Outdoors', distanceTier: 'Short drive', kidFriendly: true, section: 2 },
-  { id: 'p14', name: 'UW Campus & Burke Museum', blurb: 'Wander the gothic Quad (unreal cherry blossoms in late March), see natural history at the Burke and contemporary art at the Henry.', category: 'Sights', distanceTier: 'Short drive', kidFriendly: true, section: 2 },
+  { id: 'p14', name: 'University of Washington', blurb: "One of the most beautiful campuses in the country. The cherry blossom Quad in late March is legendary — rows of Yoshino cherries line the gothic buildings, petals drifting everywhere. Worth a wander any time of year; the campus itself is the attraction.", category: 'Sights', distanceTier: 'Short drive', kidFriendly: true, section: 2, image: '/images/uw.jpg' },
 
   // Section 3 — Casual
   { id: 'p15', name: 'Un Bien', blurb: 'Unexpectedly transcendent Caribbean sandwiches; the Caribbean Roast is the move.', category: 'Restaurants', price: '$', distanceTier: 'Short drive', kidFriendly: false, section: 3 },
@@ -93,15 +93,15 @@ export const places: Place[] = [
   { id: 'p40', name: 'Canon', blurb: "Genuinely a top-5 whisk(e)y bar in the nation. For any whisk(e)y lover it's a must-visit; wildly inventive cocktails too.", category: 'Drinks', price: '$$$$', distanceTier: 'Across town', kidFriendly: false, section: 3 },
 
   // Section 4 — Explore Seattle
-  { id: 'p41', name: 'Pike Place Market', blurb: 'The original public market; go early to beat the crowds.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4 },
-  { id: 'p42', name: 'Waterfront & Overlook Walk', blurb: 'The new park-deck linking downtown to the water.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4 },
-  { id: 'p43', name: 'Seattle Center', blurb: 'Space Needle, Chihuly Garden & Glass, and MoPOP all in one spot.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4 },
+  { id: 'p41', name: 'Pike Place Market', blurb: 'The original public market; go early to beat the crowds.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4, image: '/images/pike.jpg' },
+  { id: 'p42', name: 'Waterfront & Overlook Walk', blurb: 'The new park-deck linking downtown to the water.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4, image: '/images/waterfront.jpg' },
+  { id: 'p43', name: 'Seattle Center', blurb: 'Space Needle, Chihuly Garden & Glass, and MoPOP all in one spot.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4, image: '/images/chihuly.jpg' },
   { id: 'p44', name: 'Discovery Park', blurb: "Bluffs, a lighthouse, and beach; the city's wildest big park.", category: 'Parks & Outdoors', distanceTier: 'Across town', kidFriendly: true, section: 4 },
-  { id: 'p45', name: 'Bainbridge / Bremerton Ferry', blurb: 'Walk on for the cheapest and best "cruise" in town; spectacular skyline on the way back.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4 },
+  { id: 'p45', name: 'Bainbridge / Bremerton Ferry', blurb: 'Walk on for the cheapest and best "cruise" in town; spectacular skyline on the way back.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4, image: '/images/bainbridge.jpg' },
   { id: 'p46', name: 'Seattle Underground Tour', blurb: "Explore Pioneer Square's buried storefronts; quirky, genuinely fun local history.", category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 4 },
 
   // Section 5 — Rainy Day
-  { id: 'p47', name: 'Burke Museum & Henry Art Gallery (UW)', blurb: 'Two great museums on one campus.', category: 'Sights', distanceTier: 'Short drive', kidFriendly: true, section: 5 },
+  { id: 'p47', name: 'Burke Museum & Henry Art Gallery (UW)', blurb: 'Two great museums on one campus.', category: 'Sights', distanceTier: 'Short drive', kidFriendly: true, section: 5, image: '/images/burke-museum.jpg' },
   { id: 'p48', name: 'Museum of Flight', blurb: 'World-class, hands-on — genuinely one of the best of its kind.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 5 },
   { id: 'p49', name: 'Pacific Science Center', blurb: 'Great with kids; easy afternoon at Seattle Center.', category: 'Sights', distanceTier: 'Across town', kidFriendly: true, section: 5 },
   { id: 'p50', name: 'U Village', blurb: 'Covered shopping on a rainy afternoon, minutes from the unit.', category: 'Shopping', distanceTier: 'Short drive', kidFriendly: true, section: 5 },
@@ -110,7 +110,7 @@ export const places: Place[] = [
   { id: 'p51', name: 'View Ridge Playground & Splash Pad', blurb: 'Splash pad in summer, great year-round playground.', category: 'Family', distanceTier: 'Neighborhood', kidFriendly: true, section: 6 },
   { id: 'p52', name: 'Bryant Playground', blurb: 'Quieter neighborhood park for families.', category: 'Family', distanceTier: 'Neighborhood', kidFriendly: true, section: 6 },
   { id: 'p53', name: 'Woodland Park Zoo', blurb: 'A classic Seattle family outing.', category: 'Family', distanceTier: 'Short drive', kidFriendly: true, section: 6 },
-  { id: 'p54', name: 'Seattle Aquarium', blurb: 'Right on the waterfront; great for kids of all ages.', category: 'Family', distanceTier: 'Across town', kidFriendly: true, section: 6 },
+  { id: 'p54', name: 'Seattle Aquarium', blurb: 'Right on the waterfront; great for kids of all ages.', category: 'Family', distanceTier: 'Across town', kidFriendly: true, section: 6, image: '/images/aquarium.jpg' },
   { id: 'p55', name: "KidsQuest Children's Museum", blurb: 'In Bellevue; great for younger kids.', category: 'Family', distanceTier: 'Across town', kidFriendly: true, section: 6 },
   { id: 'p56', name: 'U District Farmers Market', blurb: 'Saturdays; close, fun, and very Seattle.', category: 'Family', distanceTier: 'Short drive', kidFriendly: true, section: 6 },
 ];
