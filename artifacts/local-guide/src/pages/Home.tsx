@@ -557,18 +557,18 @@ export default function Home() {
 
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
-                  { name: "UW Huskies", detail: "Football: Husky Stadium · Basketball: Alaska Airlines Arena — both right next door" },
-                  { name: "Seattle Mariners", detail: "T-Mobile Park" },
-                  { name: "Seattle Kraken", detail: "Climate Pledge Arena" },
-                  { name: "Seattle Seahawks", detail: "Lumen Field" },
-                  { name: "Seattle Sounders FC", detail: "Lumen Field — top-tier MLS club" },
-                  { name: "Seattle Storm (WNBA)", detail: "Climate Pledge Arena — beloved franchise" },
-                  { name: "Seattle Reign FC", detail: "Lumen Field — world-class women's soccer" },
-                  { name: "Seattle Torrent (PWHL)", detail: "Climate Pledge Arena — brand-new expansion" },
-                  { name: "Chateau Ste. Michelle", detail: "Outdoor concerts in Woodinville" },
-                  { name: "Showbox", detail: "Iconic mid-size live music venue" },
-                  { name: "Paramount Theatre", detail: "Historic downtown theater; touring acts and Broadway" },
-                  { name: "The 5th Avenue Theatre", detail: "Gorgeous 1926 Chinese-inspired theater; world-class musicals" },
+                  { name: "UW Huskies", detail: "Husky Stadium (football) · Alaska Airlines Arena (basketball) — both right next door. The college game atmosphere here is legitimately great." },
+                  { name: "Seattle Mariners", detail: "T-Mobile Park — one of the best baseball experiences in the league; catch a summer game with the roof open if the weather holds." },
+                  { name: "Seattle Kraken", detail: "Climate Pledge Arena — Seattle's NHL franchise, playing in one of the greenest arenas in the world. Great atmosphere even for casual fans." },
+                  { name: "Seattle Seahawks", detail: "Lumen Field — one of the loudest stadiums in the NFL. The 12s make it a genuine home-field advantage; the noise is real." },
+                  { name: "Seattle Sounders FC", detail: "Lumen Field — the most decorated MLS club in history, with a passionate supporter section and a World Cup-level atmosphere on big nights." },
+                  { name: "Seattle Storm (WNBA)", detail: "Climate Pledge Arena — four-time WNBA champions and one of the most storied franchises in women's basketball. Worth going." },
+                  { name: "Seattle Reign FC", detail: "Lumen Field — consistent NWSL contenders playing elite women's soccer in front of a loud, knowledgeable crowd." },
+                  { name: "Seattle Torrent (PWHL)", detail: "Climate Pledge Arena — Seattle's PWHL expansion team, joining one of the fastest-growing leagues in professional sports." },
+                  { name: "Chateau Ste. Michelle", detail: "Outdoor amphitheater in Woodinville — the best summer concert setting in the region. Bring a blanket and arrive early for the lawn." },
+                  { name: "Showbox", detail: "The legendary mid-size room where Nirvana and Pearl Jam played their way up. Cramped, loud, and perfect for any touring act." },
+                  { name: "Paramount Theatre", detail: "Historic 1928 downtown theater for major touring acts and Broadway shows — great sightlines from nearly every seat." },
+                  { name: "The 5th Avenue Theatre", detail: "Gorgeous 1926 Chinese-inspired theater; world-class musicals including many pre-Broadway tryouts that debut here first." },
                 ].map((venue, i) => (
                   <div key={i} className="bg-card p-4 rounded-lg border border-border shadow-sm">
                     <h4 className="font-serif font-medium mb-1 text-foreground">{venue.name}</h4>

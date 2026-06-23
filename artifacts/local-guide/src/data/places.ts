@@ -30,7 +30,7 @@ export interface Place {
 
 export const places: Place[] = [
   // Section 2
-  { id: 'p1', name: 'Safeway', blurb: 'Closest full grocery run.', category: 'Groceries', distanceTier: 'Neighborhood', kidFriendly: false, section: 2, image: '/images/safeway.jpg' },
+  { id: 'p1', name: 'Safeway', blurb: 'Closest full grocery run. Also has a pharmacy.', category: 'Groceries', distanceTier: 'Neighborhood', kidFriendly: false, section: 2, image: '/images/safeway.jpg' },
   { id: 'p2', name: 'PCC Community Markets', blurb: 'Beloved NW co-op; excellent prepared foods, local produce, good beer/wine.', category: 'Groceries', distanceTier: 'Short drive', kidFriendly: false, section: 2, image: '/images/pcc.jpg' },
   { id: 'p3', name: 'Grateful Bread', blurb: 'Neighborhood bakery; pastries and proper loaves.', category: 'Coffee & Bakery', price: '$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/gratefulbread.jpg' },
   { id: 'p4', name: 'Top Pot Doughnuts', blurb: 'A Seattle doughnut institution with great coffee.', category: 'Coffee & Bakery', price: '$', distanceTier: 'Neighborhood', kidFriendly: true, section: 2, image: '/images/toppot.jpg' },
