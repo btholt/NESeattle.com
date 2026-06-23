@@ -643,7 +643,7 @@ export default function Home() {
                 <div>
                   <h4 className="font-medium mb-1">Car prowls</h4>
                   <p className="text-sm text-muted-foreground leading-relaxed">
-                    Don't leave anything visible in a parked car — car prowls are the one local annoyance visitors get caught by. Take valuables with you.
+                    Don't leave anything visible in a parked car — car prowls are the one local annoyance visitors get caught by. This especially means luggage: a bag in the back seat is an invitation. Take valuables with you and leave the trunk empty and visible.
                   </p>
                 </div>
               </li>
