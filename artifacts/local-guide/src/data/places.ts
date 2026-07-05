@@ -73,8 +73,8 @@ export const places: Place[] = [
 
   // Section 3 — Neighborhood Breweries
   { id: 'p29', name: 'Human People Beer', blurb: "Solid neighborhood brewery with a welcoming taproom. They normally have great pizza, and some nights will have an amazing food pop-up — worth checking their Instagram before you go.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: true, section: 3, image: '/images/humanpeoplebeer.jpg' },
-  { id: 'p30', name: 'Ravenna Brewing', blurb: "Easygoing local taproom with one of the best patios in the neighborhood for a beer outside. They usually have a food truck on-site, so you can make a proper meal of it.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3, image: '/images/ravenna.jpg' },
-  { id: 'p31', name: 'Burke-Gilman Brewing', blurb: "Right off the trail — the obvious stop after a bike ride. The El Camion food truck is around the corner, so you can get a burrito and a beer together. Good combo.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: false, section: 3, image: '/images/burkegilmanbrewing.jpg' },
+  { id: 'p30', name: 'Ravenna Brewing', blurb: "Easygoing local taproom with one of the best patios in the neighborhood for a beer outside. They usually have a food truck on-site, so you can make a proper meal of it.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: true, section: 3, image: '/images/ravenna.jpg' },
+  { id: 'p31', name: 'Burke-Gilman Brewing', blurb: "Right off the trail — the obvious stop after a bike ride. The El Camion food truck is around the corner, so you can get a burrito and a beer together. Good combo.", category: 'Brewery', price: '$$', distanceTier: 'Neighborhood', kidFriendly: true, section: 3, image: '/images/burkegilmanbrewing.jpg' },
 
   // Section 3 — Ballard Brewing District
   { id: 'p32', name: 'Stoup Brewing', blurb: 'My usual first stop in the district — dependable across the whole lineup, with a great beer-garden vibe.', category: 'Brewery', price: '$$', distanceTier: 'Across town', kidFriendly: true, section: 3, image: '/images/stoup.jpg' },
@@ -85,7 +85,7 @@ export const places: Place[] = [
   { id: 'p62', name: 'Fair Isle Brewing', blurb: 'World-class mixed-fermentation saisons and lagers — genuinely some of the best in the region. They frequently have excellent food pop-ups too, so worth checking their schedule before you go.', category: 'Brewery', price: '$$', distanceTier: 'Across town', kidFriendly: true, section: 3, image: '/images/fairisle.jpg' },
 
   // Section 3 — Standalone favorite brewery
-  { id: 'p57', name: 'Holy Mountain Brewing', blurb: 'One of my favorite breweries in the city, renowned for its oak- and barrel-aged and mixed-fermentation beers. This Greenwood taproom is the all-ages location (the original Interbay spot is 21+).', category: 'Brewery', price: '$$', distanceTier: 'Across town', kidFriendly: false, section: 3, image: '/images/holymountain.jpg' },
+  { id: 'p57', name: 'Holy Mountain Brewing', blurb: 'One of my favorite breweries in the city, renowned for its oak- and barrel-aged and mixed-fermentation beers. This Greenwood taproom is the all-ages location (the original Interbay spot is 21+).', category: 'Brewery', price: '$$', distanceTier: 'Across town', kidFriendly: true, section: 3, image: '/images/holymountain.jpg' },
 
   // Section 3 — Wine
   { id: 'p35', name: 'Januik Winery', blurb: 'Polished, food-friendly Washington reds; a reliable, classy pour.', category: 'Winery', price: '$$$', distanceTier: 'Across town', kidFriendly: false, section: 3, image: '/images/januik.jpg' },
