@@ -505,7 +505,7 @@ export default function Home() {
                           The Ballard Brewing District
                         </h3>
                         <p className="text-muted-foreground leading-relaxed">
-                          An attraction unto itself: over a dozen breweries in a few walkable blocks, with a legendary pub crawl between them. Start with these three — they're my picks — then wander freely. You genuinely can't go wrong with any of them over there.
+                          An attraction unto itself: over a dozen breweries in a few walkable blocks, with a legendary pub crawl between them. Start with these six — they're my picks — then wander freely. You genuinely can't go wrong with any of them over there.
                         </p>
                       </div>
                     </div>
