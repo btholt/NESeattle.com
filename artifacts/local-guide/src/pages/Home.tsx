@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { places, Place } from "@/data/places";
-import { useGetEvents } from "@workspace/api-client-react";
+import { useGetEvents, customFetch, type EventsResponse } from "@workspace/api-client-react";
 import logoPath from "@assets/logo-removebg-preview_1782171480209.png";
 import {
   ExternalLink,
@@ -120,7 +120,20 @@ function PlaceCard({ place }: { place: Place }) {
 }
 
 function EventsSection() {
-  const { data: eventsRes, isLoading } = useGetEvents();
+  const { data: eventsRes, isLoading, isError } = useGetEvents({
+    query: {
+      queryKey: [import.meta.env.VITE_GITHUB_PAGES ? "pages-events" : "/api/events"],
+      ...(import.meta.env.VITE_GITHUB_PAGES
+        ? {
+            queryFn: ({ signal }) =>
+              customFetch<EventsResponse>(
+                `${import.meta.env.BASE_URL}api/events/index.json`,
+                { signal, responseType: "json" },
+              ),
+          }
+        : {}),
+    },
+  });
 
   if (isLoading) {
     return (
@@ -134,6 +147,14 @@ function EventsSection() {
           </div>
         ))}
       </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <p role="alert" className="text-muted-foreground mt-8 text-center">
+        Events could not be loaded. Please try again later.
+      </p>
     );
   }
 

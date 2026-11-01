@@ -34,5 +34,3 @@ externalPort = 3000
 [userenv]
 
 [userenv.shared]
-TICKETMASTER_CONSUMER_KEY = "O63E4BYp3Fl5LkCQGXvZLpubcxRfy0nS"
-TICKETMASTER_CONSUMER_SECRET = "pY7kBwnu4zU1IzcO"

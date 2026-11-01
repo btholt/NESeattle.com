@@ -1,4 +1,5 @@
 import { Router } from "express";
+import type { Logger } from "pino";
 
 const router = Router();
 
@@ -50,7 +51,9 @@ async function fetchSeatGeek(): Promise<Event[]> {
     client_id: clientId,
   });
 
-  const res = await fetch(`https://api.seatgeek.com/2/events?${params}`);
+  const res = await fetch(`https://api.seatgeek.com/2/events?${params}`, {
+    signal: AbortSignal.timeout(15000),
+  });
   if (!res.ok) throw new Error(`SeatGeek responded ${res.status}`);
 
   const json = (await res.json()) as {
@@ -105,7 +108,8 @@ async function fetchTicketmaster(): Promise<Event[]> {
   });
 
   let res = await fetch(
-    `https://app.ticketmaster.com/discovery/v2/events.json?${cityParams}`
+    `https://app.ticketmaster.com/discovery/v2/events.json?${cityParams}`,
+    { signal: AbortSignal.timeout(15000) },
   );
   if (!res.ok) throw new Error(`Ticketmaster responded ${res.status}`);
 
@@ -127,7 +131,8 @@ async function fetchTicketmaster(): Promise<Event[]> {
     });
 
     res = await fetch(
-      `https://app.ticketmaster.com/discovery/v2/events.json?${geoParams}`
+      `https://app.ticketmaster.com/discovery/v2/events.json?${geoParams}`,
+      { signal: AbortSignal.timeout(15000) },
     );
     if (!res.ok) throw new Error(`Ticketmaster latlong responded ${res.status}`);
     json = (await res.json()) as TMResponse;
@@ -144,12 +149,12 @@ async function fetchTicketmaster(): Promise<Event[]> {
   }));
 }
 
-router.get("/events", async (req, res) => {
+export async function getEventsResponse(log: Pick<Logger, "info" | "warn">) {
   const source = EVENTS_SOURCE;
 
   const tmKeyPresent = !!process.env.TICKETMASTER_API_KEY;
   const sgKeyPresent = !!process.env.SEATGEEK_CLIENT_ID;
-  req.log.info(
+  log.info(
     { source, tmKeyPresent, sgKeyPresent },
     "Events endpoint called"
   );
@@ -157,45 +162,45 @@ router.get("/events", async (req, res) => {
   try {
     if (source === "seatgeek") {
       const events = await fetchSeatGeek();
-      req.log.info({ eventsCount: events.length }, "SeatGeek events fetched");
-      res.json({ source: "seatgeek", events, fallbackLinks: null });
-      return;
+      log.info({ eventsCount: events.length }, "SeatGeek events fetched");
+      return { source: "seatgeek", events, fallbackLinks: null };
     }
 
     if (source === "ticketmaster") {
       const events = await fetchTicketmaster();
-      req.log.info({ eventsCount: events.length }, "Ticketmaster events fetched");
-      res.json({ source: "ticketmaster", events, fallbackLinks: null });
-      return;
+      log.info({ eventsCount: events.length }, "Ticketmaster events fetched");
+      return { source: "ticketmaster", events, fallbackLinks: null };
     }
   } catch (err) {
-    req.log.warn({ err, source }, "Primary events source failed, trying secondary");
+    log.warn({ err, source }, "Primary events source failed, trying secondary");
 
     if (source === "seatgeek") {
       try {
         const events = await fetchTicketmaster();
-        req.log.info({ eventsCount: events.length }, "Ticketmaster fallback events fetched");
-        res.json({ source: "ticketmaster", events, fallbackLinks: null });
-        return;
+        log.info({ eventsCount: events.length }, "Ticketmaster fallback events fetched");
+        return { source: "ticketmaster", events, fallbackLinks: null };
       } catch (err2) {
-        req.log.warn({ err: err2 }, "Secondary events source also failed, using static fallback");
+        log.warn({ err: err2 }, "Secondary events source also failed, using static fallback");
       }
     }
 
     if (source === "ticketmaster") {
       try {
         const events = await fetchSeatGeek();
-        req.log.info({ eventsCount: events.length }, "SeatGeek fallback events fetched");
-        res.json({ source: "seatgeek", events, fallbackLinks: null });
-        return;
+        log.info({ eventsCount: events.length }, "SeatGeek fallback events fetched");
+        return { source: "seatgeek", events, fallbackLinks: null };
       } catch (err2) {
-        req.log.warn({ err: err2 }, "SeatGeek fallback also failed, using static fallback");
+        log.warn({ err: err2 }, "SeatGeek fallback also failed, using static fallback");
       }
     }
   }
 
-  req.log.info("Returning static fallback links");
-  res.json({ source: "fallback", events: [], fallbackLinks: FALLBACK_LINKS });
+  log.info("Returning static fallback links");
+  return { source: "fallback", events: [], fallbackLinks: FALLBACK_LINKS };
+}
+
+router.get("/events", async (req, res) => {
+  res.json(await getEventsResponse(req.log));
 });
 
 export default router;

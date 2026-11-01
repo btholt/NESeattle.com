@@ -1,0 +1,60 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: "0 15 * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - uses: actions/configure-pages@v5
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run typecheck:libs
+      - run: pnpm --filter @workspace/local-guide typecheck
+      - run: pnpm --filter @workspace/api-server typecheck
+      - run: pnpm --filter @workspace/scripts exec tsx --test pages-events.test.ts
+      - run: pnpm --filter @workspace/local-guide build
+        env:
+          BASE_PATH: /
+          VITE_GITHUB_PAGES: "true"
+      - name: Generate events snapshot
+        run: pnpm --filter @workspace/scripts exec tsx build-pages-events.ts
+        env:
+          NODE_ENV: production
+          TICKETMASTER_API_KEY: ${{ secrets.TICKETMASTER_API_KEY }}
+          SEATGEEK_CLIENT_ID: ${{ secrets.SEATGEEK_CLIENT_ID }}
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: artifacts/local-guide/dist/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
