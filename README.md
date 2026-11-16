@@ -43,6 +43,96 @@ NODE_ENV=production pnpm --filter @workspace/scripts exec tsx build-pages-events
 pnpm --filter @workspace/local-guide serve
 ```
 
+## PostgreSQL connection saturation
+
+The Pages site does not use PostgreSQL. The shared `@workspace/db` package
+defines a PostgreSQL pool, but the current API does not use it. If a separate
+PostgreSQL server reports exhausted ordinary connections, an operator must
+connect to the correct server through an administrator or reserved connection;
+the alert alone does not identify sessions that are safe to terminate.
+
+1. Reduce application pool sizes, instance counts, and retry pressure where
+   appropriate while preserving an administrative connection. Account for all
+   application instances and other clients when setting the connection budget.
+2. With sufficient privileges to see other sessions, inspect live client
+   sessions (do not share the results without reviewing sensitive metadata):
+
+   ```sql
+   SELECT pid, backend_start, datname, usename, application_name, client_addr,
+          state, clock_timestamp() - state_change AS state_age,
+          clock_timestamp() - xact_start AS transaction_age
+   FROM pg_stat_activity
+   WHERE backend_type = 'client backend' AND pid <> pg_backend_pid()
+   ORDER BY xact_start NULLS LAST, state_change NULLS LAST;
+   ```
+
+   Confirm the session owner, application, database, state and age with the
+   responsible operator. An old session or transaction is not by itself proof
+   that it is stale. Never target administrative, replication, pooler, or
+   otherwise required sessions. Termination rolls back an open transaction and
+   can disrupt work. Immediately recheck the PID **and backend_start** and
+   the other identifying fields before terminating each confirmed stale session
+   individually. Replace the placeholders below with the verified PID, backend
+   start timestamp, and current state; no match means no session is terminated:
+
+   ```sql
+   SELECT pg_terminate_backend(pid)
+   FROM pg_stat_activity
+   WHERE pid = <verified_pid>
+     AND backend_start = <verified_backend_start>::timestamptz
+     AND state = <verified_state>
+     AND backend_type = 'client backend'
+     AND pid <> pg_backend_pid();
+   ```
+
+   Quote the timestamp and state as SQL string literals. Do not automate or
+   bulk terminate sessions; revalidate before every termination.
+3. Before changing timeouts, record the effective values and their sources on
+   the affected application connection:
+
+   ```sql
+   SELECT name, setting, unit, source, sourcefile, sourceline
+   FROM pg_settings
+   WHERE name IN ('idle_session_timeout', 'idle_in_transaction_session_timeout');
+   ```
+
+   Also record existing role/database overrides and the configuration
+   management source of truth:
+
+   ```sql
+   SELECT r.rolname, d.datname, s.setconfig
+   FROM pg_db_role_setting AS s
+   LEFT JOIN pg_roles AS r ON r.oid = s.setrole
+   LEFT JOIN pg_database AS d ON d.oid = s.setdatabase;
+   ```
+
+   Null role or database names indicate a setting for all roles or databases.
+   Review the output before sharing it. `idle_session_timeout`
+   requires PostgreSQL 14 or later; check the server version and managed-service
+   restrictions. Choose bounded values with the application owner based on its
+   normal workload; idle-session timeouts can interfere with connection poolers.
+   Apply them through the supported configuration mechanism, preferably scoped to
+   the affected application role and database rather than the administrator.
+   For example, replace the placeholders with properly quoted identifiers and
+   an agreed duration for each setting:
+
+   ```sql
+   ALTER ROLE <application_role> IN DATABASE <application_database>
+     SET idle_in_transaction_session_timeout = '<duration>';
+   ALTER ROLE <application_role> IN DATABASE <application_database>
+     SET idle_session_timeout = '<duration>';
+   ```
+
+   Role/database settings affect new sessions, so recycle application
+   connections in a controlled manner.
+4. Monitor ordinary connection headroom, connection failures, transaction ages,
+   and application errors. If limits are too aggressive, restore the recorded
+   values at the same scope using the same configuration mechanism. For a
+   role/database override that did not previously exist, use `ALTER ROLE ...
+   IN DATABASE ... RESET` for that setting instead. Role settings take effect
+   on new connections; if server configuration files were changed, reload them
+   from the admin lane as required. Verify the effective values after rollback.
+
 Ticketmaster credentials were previously committed in `.replit`. They have
 been removed from that file but remain in Git history; revoke/rotate them
 before configuring new credentials.
